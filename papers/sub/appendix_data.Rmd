@@ -1,0 +1,40 @@
+# Description of Data Sets
+\label{sec:data}
+
+## Set 1
+
+Set 1 contains data from an unpublished study by @nadarevic2012 on the association of personality traits and the truth effect. In this web-based study, participants were presented with 20 trivia statements, half of which were true and half were false. Participants were informed that statements could be either true or false, and asked to assign each to one of five knowledge categories. In a subsequent phase, participants completed a number of personality questionnaires. Finally, participants were again presented with 20 trivia statements and asked to provide a truth rating on a scale from 1 to 5 for each statement. Ten of these statements had been presented in Phase 1, the other ten statements were new. 
+
+In total, 267 participants completed the study. Mean truth ratings for repeated statements were higher than for new statements, $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[1]` ($SD$ = `r descriptives$sd[1]`). A two-sided $t$ test for paired samples revealed a significant truth effect, $t(266) = 9.47$, $p < .001$, Cohen's $d = 0.58$. 
+
+
+## Set 2
+
+Data Set 2 is from @nadarevic2011. In the exposure phase, participants were asked to assign 20 unknown trivia statements to one of five knowledge categories. After completing a personality questionnaire in the retention phase, participants were asked to provide truth ratings for 20 statements on a scale from 1 to 5. Ten of these statements were repeated from the exposure phase, the others were new. As an experimental manipulation, one group of participants was instructed to respond intuitively, while the other was asked to think carefully about each truth judgment. This manipulation did not have any systematic effect on truth judgments, however. Therefore, we did not include the factor condition in the analysis. The total sample comprised 139 participants. On average, truth jdugments for repeated statements were higher than for new statements, $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[2]` ($SD$ = `r descriptives$sd[2]`). This difference is statistically significant, $t(138) = 9.16$, $p < .001$, Cohen's $d = 0.78$. 
+
+## Set 3
+
+Data Set 3 is based on Experiment 1 in @nadarevic2017 who investigated the influence of warnings on the truth effect. For the analysis, we only included data from the control group, which received standard instructions and no warnings. The sample comprises 33 students who participated in the lab-based study. In Phase 1, participants assigned 98 statements (including ten buffer statements) to knowledge categories. After a one-week retention interval, they returned to the lab and provided truth statements on a scale from 1 to 6 for 44 statements from Phase 1 and 44 new statements. Truth statements for repeated items were significantly higher than for new statements, $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[3]` ($SD$ = `r descriptives$sd[3]`), $t(32) = 6.54$, $p < .001$, Cohen's $d = 1.14$.
+
+## Set 4
+
+For Set 4, we used data from Nadarevic and A\ss falg's [-@nadarevic2017] Experiment 2. It was identical to the first experiment with the exception that the exposure phase was directly followed by the judgment phase and participants rated 80 statements, half of which were repeated. As in the previous data set, we only included the control condition in the analysis. The set contains 98 participants. On the mean level, there is a significant truth effect: $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[4]` ($SD$ = `r descriptives$sd[4]`), $t(97) = 8.61$, $p < .001$, Cohen's $d = 0.87$. 
+
+## Set 5
+
+Data Set 5 is based on Experiment 1 reported in @nadarevic2014. The authors investigated the influence of Phase-1 task and retention interval between exposure and judgment phase on the truth effect. Unlike in the previous experiments, participants were asked to rate the statements' validity already in Phase 1. In two subsequent truth-judgment phases, participants rated the statements again: One was administered after ten minutes (Phase 2), another one after one week (Phase 3). Half of the statements from Phase 1 were repeated in Phase 2, the other half was repeated in Phase 3. Truth judgments in Phase 1 and a retention interval of several days is a commonly used setting in truth-effect experiments [e.g., @hasher1977]. In contrast, rating the statements' truth in Phase 1 and again after a short retention interval does not lead to a truth effect. Therefore, we only included truth judgments from Phase 3 in the analysis. The sample comprised 85 participants and 88 truth judgments on a scale from 1 to 6 per participant. Analysis of mean truth ratings for repeated and new statements revealed a significant truth effect: $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[5]` ($SD$ = `r descriptives$sd[5]`), $t(84) = 5.09$, $p < .001$, Cohen's $d = 0.55$.
+
+
+## Set 6
+
+Set 6 contains data from Experiment 2 in @nadarevic2014. Participants were assigned to one of two experimental conditions. In one condition, as in Experiment 1, participants rated the truth of each statement in Phase 1. In the other condition, participants assigned the statements to knowledge categories. After a ten minute retention interval, participants in both groups provided truth statements for 88 statements, half of which were repeated from Phase 1. We only included data from the category-rating condition in the analysis. The sample comprised 35 participants. Average truth ratings for repeated statements were significantly higher than for new statements, $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[6]` ($SD$ = `r descriptives$sd[6]`), $t(34) = 2.50$, $p = .017$, Cohen's $d = 0.42$.
+
+
+## Set 7
+
+Data Set 7 is based on Experiment 1 reported in @brashier2020. Similar to Nadarevic and Erdfelder's [-@nadarevic2014] Experiment 2, participants initially rated 60 statements either for truthfulness or for interest on a scale from 1 to 6. In the judgment phase, they provided truth ratings for these statements and 60 additional statements. We included the data from the interest-rating condition in the analysis. The data set contains 52 participants. The average difference in truth ratings was $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[7]` ($SD$ = `r descriptives$sd[7]`), revealing a significant truth effect: $t(51) = 5.52$, $p < .001$, Cohen's $d = 0.77$.
+
+
+## Set 8
+
+For the last data set, we included data from Experiment 1 reported in @pennycook2018. Participants rated the interestingness of 14 trivia statements in the first phase. After a short retention interval, participants rated the same statements and 14 additional statements in terms of truthfulness on a scale from 1 to 6. Eight of these 28 statements were likely to be known by all participants, the other 20 statements were largely unknown. In the reanalysis, we included truth ratings for the 20 unknown statements. We excluded 13 participants due to missings that occurred during the judgment phase. The final data set comprises 396 participants. On average, truth judgments for repeated statements were higher than for new statements, $M_\text{rep} - M_\text{new} =$ `r descriptives$obs[8]` ($SD$ = `r descriptives$sd[8]`), revealing a significant truth effect: $t(395) = 10.08$, $p < .001$, Cohen's $d = 0.51$.

@@ -1,0 +1,27 @@
+# Prior Specifications
+\label{sec:priors}
+
+The parameters $\alpha_i$, $\beta$, $\mu$, and $\sigma^2$ are common to all models. We place a noninformative and scale-invariant prior called \textit{Jeffreys prior} [@jeffreys1961] on the non-effect parameters $\mu$ and $\sigma^2$:
+\begin{equation}
+\pi(\mu,\ \sigma^2) \propto \dfrac{1}{\sigma^2}.
+\end{equation}
+
+Priors on the remaining parameters are defined as functions of $\sigma^2$, the variance of the observed variable. We specify the following prior for person-specific intercepts
+\begin{equation}
+\begin{split}
+\label{eq:prior_alpha}
+\alpha_i &\overset{\text{iid}}{\sim} \text{Normal}(0,\ g_\alpha \sigma^2),\\
+g_\alpha &\sim \text{Inverse-}\chi^2(r_\alpha^2).
+\end{split}
+\end{equation}
+
+We expected the variability in people's individual baselines to be about twice as large as the inter-trial variability. Therefore, we set $r_\alpha^2 = 2^2$. Note that the inverse-$\chi^2$ distribution has fat tails and, given sufficient data, will be overruled by the data if the observed variability differs strongly from what we expected. 
+
+We apply a similar reasoning to the effect of factual truth, $\beta$. We define
+\begin{equation}
+\begin{split}
+\beta &\sim \text{Normal}(0,\ g_\beta \sigma^2),\\
+g_\beta &\sim \text{Inverse-}\chi^2(r_\beta^2),
+\end{split}
+\end{equation}
+and set $r_\beta^2 = 2^2$. Sensitivity analyses revealed that results did not differ meaningfully for any choice of $r_\alpha^2,\ r_\beta^2 \in [0.25, 16]$.

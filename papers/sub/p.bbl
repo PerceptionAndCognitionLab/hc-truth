@@ -1,0 +1,2174 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{aitkin1991}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fcf82f21e658828c98341af24b04da04}{%
+           family={Aitkin},
+           familyi={A\bibinitperiod},
+           given={Murray},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{fcf82f21e658828c98341af24b04da04}
+      \strng{fullhash}{fcf82f21e658828c98341af24b04da04}
+      \strng{bibnamehash}{fcf82f21e658828c98341af24b04da04}
+      \strng{authorbibnamehash}{fcf82f21e658828c98341af24b04da04}
+      \strng{authornamehash}{fcf82f21e658828c98341af24b04da04}
+      \strng{authorfullhash}{fcf82f21e658828c98341af24b04da04}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Methodological)}
+      \field{month}{9}
+      \field{number}{1}
+      \field{title}{Posterior {{Bayes Factors}}}
+      \field{volume}{53}
+      \field{year}{1991}
+      \field{pages}{111\bibrangedash 128}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1111/j.2517-6161.1991.tb01812.x
+      \endverb
+    \endentry
+    \entry{arkes1991}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=444838e8b05c3a1bfa90232aa536ce31}{%
+           family={Arkes},
+           familyi={A\bibinitperiod},
+           given={Hal\bibnamedelima R.},
+           giveni={H\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7b5d5682b9da69f8a9216fd98e56febf}{%
+           family={Boehm},
+           familyi={B\bibinitperiod},
+           given={Lawrence\bibnamedelima E},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3ae0c93ab4f8975b1541c4accdeac440}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Gang},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{9f565e6cb294afc091f207e18aabbdb1}
+      \strng{fullhash}{0ecabac1c42ea3797e3d3e245199363a}
+      \strng{bibnamehash}{0ecabac1c42ea3797e3d3e245199363a}
+      \strng{authorbibnamehash}{0ecabac1c42ea3797e3d3e245199363a}
+      \strng{authornamehash}{9f565e6cb294afc091f207e18aabbdb1}
+      \strng{authorfullhash}{0ecabac1c42ea3797e3d3e245199363a}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00221031}
+      \field{journaltitle}{Journal of Experimental Social Psychology}
+      \field{month}{11}
+      \field{number}{6}
+      \field{title}{Determinants of Judged Validity}
+      \field{volume}{27}
+      \field{year}{1991}
+      \field{pages}{576\bibrangedash 605}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.1016/0022-1031(91)90026-3
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\XM6ZMFCA\\arkes_1991_journal_of_experimental_social_psychology.pdf
+      \endverb
+    \endentry
+    \entry{bacon1979}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=982eee88f08780825abfe8e98633e291}{%
+           family={Bacon},
+           familyi={B\bibinitperiod},
+           given={Frederick\bibnamedelima T.},
+           giveni={F\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{982eee88f08780825abfe8e98633e291}
+      \strng{fullhash}{982eee88f08780825abfe8e98633e291}
+      \strng{bibnamehash}{982eee88f08780825abfe8e98633e291}
+      \strng{authorbibnamehash}{982eee88f08780825abfe8e98633e291}
+      \strng{authornamehash}{982eee88f08780825abfe8e98633e291}
+      \strng{authorfullhash}{982eee88f08780825abfe8e98633e291}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{journaltitle}{Journal of Experimental Psychology: Human Learning and Memory}
+      \field{number}{3}
+      \field{shorttitle}{Credibility of Repeated Statements}
+      \field{title}{Credibility of Repeated Statements: {{Memory}} for Trivia.}
+      \field{volume}{5}
+      \field{year}{1979}
+      \field{pages}{241}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1037/0278-7393.5.3.241
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\ZPBFW8JB\\bacon_1979_journal_of_experimental_psychology_human_learning_and_memory.pdf
+      \endverb
+    \endentry
+    \entry{begg1992}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6b87170922a7cf5b27cf575394ef968f}{%
+           family={Begg},
+           familyi={B\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5a31eafac32fbaf9fd1ac5d2be58047a}{%
+           family={Anas},
+           familyi={A\bibinitperiod},
+           given={Ann},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c0efe80b804c85231b84800c7d64db98}{%
+           family={Farinacci},
+           familyi={F\bibinitperiod},
+           given={Suzanne},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9c3c8d9e9de34efc216bbff43f6a5b3b}
+      \strng{fullhash}{254a232097fb6adb630e21d4c09fc590}
+      \strng{bibnamehash}{254a232097fb6adb630e21d4c09fc590}
+      \strng{authorbibnamehash}{254a232097fb6adb630e21d4c09fc590}
+      \strng{authornamehash}{9c3c8d9e9de34efc216bbff43f6a5b3b}
+      \strng{authorfullhash}{254a232097fb6adb630e21d4c09fc590}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{journaltitle}{Journal of Experimental Psychology: General}
+      \field{number}{4}
+      \field{shorttitle}{Dissociation of Processes in Belief}
+      \field{title}{Dissociation of Processes in Belief: {{Source}} Recollection, Statement Familiarity, and the Illusion of Truth.}
+      \field{volume}{121}
+      \field{year}{1992}
+      \field{pages}{446}
+      \range{pages}{1}
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\V2FKW3EZ\\begg_1992_journal_of_experimental_psychology_general.pdf
+      \endverb
+    \endentry
+    \entry{boehm1994}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7b5d5682b9da69f8a9216fd98e56febf}{%
+           family={Boehm},
+           familyi={B\bibinitperiod},
+           given={Lawrence\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \strng{fullhash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \strng{bibnamehash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \strng{authorbibnamehash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \strng{authornamehash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \strng{authorfullhash}{7b5d5682b9da69f8a9216fd98e56febf}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0146-1672, 1552-7433}
+      \field{journaltitle}{Personality and Social Psychology Bulletin}
+      \field{month}{6}
+      \field{number}{3}
+      \field{shorttitle}{The Validity Effect}
+      \field{title}{The Validity Effect: A Search for Mediating Variables}
+      \field{volume}{20}
+      \field{year}{1994}
+      \field{pages}{285\bibrangedash 293}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1177/0146167294203006
+      \endverb
+    \endentry
+    \entry{brashier2020}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=4e1cf7b6be09c1866d5dd934c12534f7}{%
+           family={Brashier},
+           familyi={B\bibinitperiod},
+           given={Nadia\bibnamedelima M.},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6542e6f3e0d8e175cce5cc6245a64990}{%
+           family={Eliseev},
+           familyi={E\bibinitperiod},
+           given={Emmaline\bibnamedelima Drew},
+           giveni={E\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a2218d13f2a9dae94a758459c136f1cb}{%
+           family={Marsh},
+           familyi={M\bibinitperiod},
+           given={Elizabeth\bibnamedelima J.},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{a75f4ee904d9f0aaeffd9b3006958b8e}
+      \strng{fullhash}{855efb23f8825acd081bcb1c7c58b02e}
+      \strng{bibnamehash}{855efb23f8825acd081bcb1c7c58b02e}
+      \strng{authorbibnamehash}{855efb23f8825acd081bcb1c7c58b02e}
+      \strng{authornamehash}{a75f4ee904d9f0aaeffd9b3006958b8e}
+      \strng{authorfullhash}{855efb23f8825acd081bcb1c7c58b02e}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00100277}
+      \field{journaltitle}{Cognition}
+      \field{month}{1}
+      \field{title}{An Initial Accuracy Focus Prevents Illusory Truth}
+      \field{volume}{194}
+      \field{year}{2020}
+      \field{pages}{104054}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.cognition.2019.104054
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\EI9NEKE7\\Brashier et al. - 2020 - An initial accuracy focus prevents illusory truth.pdf
+      \endverb
+    \endentry
+    \entry{brashier2017}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=4e1cf7b6be09c1866d5dd934c12534f7}{%
+           family={Brashier},
+           familyi={B\bibinitperiod},
+           given={Nadia\bibnamedelima M.},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a915da1d16f80fd4964038cf6ab4887f}{%
+           family={Umanath},
+           familyi={U\bibinitperiod},
+           given={Sharda},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=492c50d14ec1f93d3002554deabaad52}{%
+           family={Cabeza},
+           familyi={C\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a2218d13f2a9dae94a758459c136f1cb}{%
+           family={Marsh},
+           familyi={M\bibinitperiod},
+           given={Elizabeth\bibnamedelima J.},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{a75f4ee904d9f0aaeffd9b3006958b8e}
+      \strng{fullhash}{81815a109d0f3373bdb0a750bebbe0e8}
+      \strng{bibnamehash}{81815a109d0f3373bdb0a750bebbe0e8}
+      \strng{authorbibnamehash}{81815a109d0f3373bdb0a750bebbe0e8}
+      \strng{authornamehash}{a75f4ee904d9f0aaeffd9b3006958b8e}
+      \strng{authorfullhash}{81815a109d0f3373bdb0a750bebbe0e8}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Consumers regularly encounter repeated false claims in political and marketing campaigns, but very little empirical work addresses their impact among older adults. Repeated statements feel easier to process, and thus more truthful, than new ones (i.e., illusory truth). When judging truth, older adults' accumulated general knowledge may offset this perception of fluency. In two experiments, participants read statements that contradicted information stored in memory; a postexperimental knowledge check confirmed what individual participants knew. Unlike young adults, older adults exhibited illusory truth only when they lacked knowledge about claims. This interaction between knowledge and fluency extends dual-process theories of aging.}
+      \field{issn}{1939-1498, 0882-7974}
+      \field{journaltitle}{Psychology and Aging}
+      \field{month}{6}
+      \field{number}{4}
+      \field{shorttitle}{Competing Cues}
+      \field{title}{Competing Cues: {{Older}} Adults Rely on Knowledge in the Face of Fluency.}
+      \field{volume}{32}
+      \field{year}{2017}
+      \field{pages}{331\bibrangedash 337}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1037/pag0000156
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\52E9UCGN\\Brashier et al. - 2017 - Competing cues Older adults rely on knowledge in .pdf
+      \endverb
+    \endentry
+    \entry{cook2016}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4dc3d25cff8125b543c099f502535f3f}{%
+           family={Cook},
+           familyi={C\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e7ebb66ea12299a9aea6e35ae34511ab}{%
+           family={Lewandowsky},
+           familyi={L\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \strng{fullhash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \strng{bibnamehash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \strng{authorbibnamehash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \strng{authornamehash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \strng{authorfullhash}{607c8ee7e7fd287a62bef39f31909dbb}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Belief polarization is said to occur when two people respond to the same evidence by updating their beliefs in opposite directions. This response is considered to be ``irrational'' because it involves contrary updating, a form of belief updating that appears to violate normatively optimal responding, as for example dictated by Bayes' theorem. In light of much evidence that people are capable of normatively optimal behavior, belief polarization presents a puzzling exception. We show that Bayesian networks, or Bayes nets, can simulate rational belief updating. When fit to experimental data, Bayes nets can help identify the factors that contribute to polarization. We present a study into belief updating concerning the reality of climate change in response to information about the scientific consensus on anthropogenic global warming (AGW). The study used representative samples of Australian and U.S. participants. Among Australians, consensus information partially neutralized the influence of worldview, with free-market supporters showing a greater increase in acceptance of human-caused global warming relative to free-market opponents. In contrast, while consensus information overall had a positive effect on perceived consensus among U.S. participants, there was a reduction in perceived consensus and acceptance of human-caused global warming for strong supporters of unregulated free markets. Fitting a Bayes net model to the data indicated that under a Bayesian framework, free-market support is a significant driver of beliefs about climate change and trust in climate scientists. Further, active distrust of climate scientists among a small number of U.S. conservatives drives contrary updating in response to consensus information among this particular group.}
+      \field{journaltitle}{Topics in Cognitive Science}
+      \field{number}{1}
+      \field{title}{Rational Irrationality: {{Modeling}} Climate Change Belief Polarization Using {{Bayesian}} Networks}
+      \field{volume}{8}
+      \field{year}{2016}
+      \field{pages}{160\bibrangedash 179}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1111/tops.12186
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\K44DRJIE\\Cook und Lewandowsky - 2016 - Rational Irrationality Modeling Climate Change Be.pdf;C\:\\Users\\Martin\\Zotero\\storage\\53AIIKCL\\tops.html
+      \endverb
+      \keyw{Bayes' theorem,Bayesian updating,Belief polarization,Climate change}
+    \endentry
+    \entry{davis-stober2019}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b29dc12563de3c671035f4ede2a7406d}{%
+           family={{Davis-Stober}},
+           familyi={D\bibinitperiod},
+           given={Clintin\bibnamedelima P.},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=549bee3aadf3f8b72fd84072efe0a453}{%
+           family={Regenwetter},
+           familyi={R\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{0a1fabda5585cd034d1553bad045d3a5}
+      \strng{fullhash}{0a1fabda5585cd034d1553bad045d3a5}
+      \strng{bibnamehash}{0a1fabda5585cd034d1553bad045d3a5}
+      \strng{authorbibnamehash}{0a1fabda5585cd034d1553bad045d3a5}
+      \strng{authornamehash}{0a1fabda5585cd034d1553bad045d3a5}
+      \strng{authorfullhash}{0a1fabda5585cd034d1553bad045d3a5}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1939-1471, 0033-295X}
+      \field{journaltitle}{Psychological Review}
+      \field{month}{11}
+      \field{number}{6}
+      \field{title}{The `Paradox' of Converging Evidence.}
+      \field{volume}{126}
+      \field{year}{2019}
+      \field{pages}{865\bibrangedash 879}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1037/rev0000156
+      \endverb
+    \endentry
+    \entry{dekeersmaecker2020}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=0289e790e677bee105fa1e22c5f6ee10}{%
+           family={{De keersmaecker}},
+           familyi={D\bibinitperiod},
+           given={Jonas},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b133a98da7e2cb2897a1a8ea24f8b5d3}{%
+           family={Dunning},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=14ca11670fbe0c75690f2537879ddb4d}{%
+           family={Pennycook},
+           familyi={P\bibinitperiod},
+           given={Gordon},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=187c24b68c32371cc8f611424ad4a73d}{%
+           family={Rand},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=753ae36612f1875f7cab25571dea2a88}{%
+           family={Sanchez},
+           familyi={S\bibinitperiod},
+           given={Carmen},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d5a7689d145b74085416395cce91d571}{%
+           family={Unkelbach},
+           familyi={U\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c10355038920757d233bfd4fecab77c}{%
+           family={Roets},
+           familyi={R\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{23e8bac1bae9dce0561241350731ded2}
+      \strng{fullhash}{5e2849efccc28f2e5b80c9c12ed6b8b3}
+      \strng{bibnamehash}{5e2849efccc28f2e5b80c9c12ed6b8b3}
+      \strng{authorbibnamehash}{5e2849efccc28f2e5b80c9c12ed6b8b3}
+      \strng{authornamehash}{23e8bac1bae9dce0561241350731ded2}
+      \strng{authorfullhash}{5e2849efccc28f2e5b80c9c12ed6b8b3}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{People are more inclined to believe that information is true if they have encountered it before. Little is known about whether this illusory truth effect is influenced by individual differences in cognition. In seven studies (combined N = 2,196), using both trivia statements (Studies 1-6) and partisan news headlines (Study 7), we investigate moderation by three factors that have been shown to play a critical role in epistemic processes: cognitive ability (Studies 1, 2, 5), need for cognitive closure (Study 1), and cognitive style, that is, reliance on intuitive versus analytic thinking (Studies 1, 3-7). All studies showed a significant illusory truth effect, but there was no evidence for moderation by any of the cognitive measures across studies. These results indicate that the illusory truth effect is robust to individual differences in cognitive ability, need for cognitive closure, and cognitive style.}
+      \field{issn}{0146-1672, 1552-7433}
+      \field{journaltitle}{Personality and Social Psychology Bulletin}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Investigating the Robustness of the Illusory Truth Effect across Individual Differences in Cognitive Ability, Need for Cognitive Closure, and Cognitive Style}
+      \field{volume}{46}
+      \field{year}{2020}
+      \field{pages}{204\bibrangedash 215}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1177/0146167219853844
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\IILCX23G\\De keersmaecker et al. - 2020 - Investigating the Robustness of the Illusory Truth.pdf
+      \endverb
+    \endentry
+    \entry{dechene2010}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=5ad22a9cd1296f0e7d816a4327d2b6bd}{%
+           family={Dechene},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=10b614b578c47130c103ad2a78304808}{%
+           family={Stahl},
+           familyi={S\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d18278174a2e9456c841b21e789fabe4}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=94d92648b29338ea4f9840fd6d5f3278}{%
+           family={Wanke},
+           familyi={W\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{94dfba7464e755bb31830f60f02b0c8c}
+      \strng{fullhash}{0a5416984eda46892ece3153bc75e9c9}
+      \strng{bibnamehash}{0a5416984eda46892ece3153bc75e9c9}
+      \strng{authorbibnamehash}{0a5416984eda46892ece3153bc75e9c9}
+      \strng{authornamehash}{94dfba7464e755bb31830f60f02b0c8c}
+      \strng{authorfullhash}{0a5416984eda46892ece3153bc75e9c9}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1088-8683, 1532-7957}
+      \field{journaltitle}{Personality and Social Psychology Review}
+      \field{month}{5}
+      \field{number}{2}
+      \field{shorttitle}{The Truth about the Truth}
+      \field{title}{The Truth about the Truth: {{A}} Meta-Analytic Review of the Truth Effect}
+      \field{volume}{14}
+      \field{year}{2010}
+      \field{pages}{238\bibrangedash 257}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1177/1088868309352251
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\9DRV3F29\\dechene_2010_personality_and_social_psychology_review.pdf;C\:\\Users\\Martin\\Zotero\\storage\\H8TCR4EP\\dechene_2010_personality_and_social_psychology_review.pdf
+      \endverb
+    \endentry
+    \entry{Gelman:etal:2004}{book}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=ba82e2f52cafc6076f0de4ae6be66db0}{%
+           family={Gelman},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0eb7b9df97d3a88ea70749141a518a1c}{%
+           family={Carlin},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=28871ba30ce0341a90f7f8e9434934df}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={H.\bibnamedelimi S.},
+           giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa537601df11ba114c0c74ca6806de99}{%
+           family={Rubin},
+           familyi={R\bibinitperiod},
+           given={D.\bibnamedelimi B.},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall}%
+      }
+      \strng{namehash}{a428ac65ac4ae3fdbf2c9d0835d9c6f3}
+      \strng{fullhash}{861a527f18cfcc294a777d03b32d8fbf}
+      \strng{bibnamehash}{861a527f18cfcc294a777d03b32d8fbf}
+      \strng{authorbibnamehash}{861a527f18cfcc294a777d03b32d8fbf}
+      \strng{authornamehash}{a428ac65ac4ae3fdbf2c9d0835d9c6f3}
+      \strng{authorfullhash}{861a527f18cfcc294a777d03b32d8fbf}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{B}ayesian data analysis (2nd edition)}
+      \field{year}{2004}
+    \endentry
+    \entry{haaf2017}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=38d068e8fbdbc00988d84b48fe96dd6c}{%
+           family={Haaf},
+           familyi={H\bibinitperiod},
+           given={Julia\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{fullhash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{bibnamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authorbibnamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authornamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authorfullhash}{3619acc58e79b8dbb3e69818fff4d682}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Model comparison in Bayesian mixed models is becoming popular in psychological science. Here we develop a set of nested models that account for order restrictions across individuals in psychological tasks. An order-restricted model addresses the question ``Does everybody,'' as in ``Does everybody show the usual Stroop effect,'' or ``Does everybody respond more quickly to intense noises than subtle ones?'' The crux of the modeling is the instantiation of 10s or 100s of order restrictions simultaneously, one for each participant. To our knowledge, the problem is intractable in frequentist contexts but relatively straightforward in Bayesian ones. We develop a Bayes factor model-comparison strategy using Zellner and Siow's default g-priors appropriate for assessing whether effects obey equality and order restrictions. We apply the methodology to seven data sets from Stroop, Simon, and Eriksen interference tasks. Not too surprisingly, we find that everybody Stroops—{}that is, for all people congruent colors are truly named more quickly than incongruent ones. But, perhaps surprisingly, we find these order constraints are violated for some people in the Simon task, that is, for these people spatially incongruent responses occur truly more quickly than congruent ones! Implications of the modeling and conjectures about the task-related differences are discussed.}
+      \field{issn}{1939-1463, 1082-989X}
+      \field{journaltitle}{Psychological Methods}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{Developing Constraint in Bayesian Mixed Models.}
+      \field{volume}{22}
+      \field{year}{2017}
+      \field{pages}{779\bibrangedash 798}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1037/met0000156
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\DZDE59SP\\Haaf und Rouder - 2017 - Developing constraint in bayesian mixed models..pdf
+      \endverb
+    \endentry
+    \entry{haaf2019}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=38d068e8fbdbc00988d84b48fe96dd6c}{%
+           family={Haaf},
+           familyi={H\bibinitperiod},
+           given={Julia\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{fullhash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{bibnamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authorbibnamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authornamehash}{3619acc58e79b8dbb3e69818fff4d682}
+      \strng{authorfullhash}{3619acc58e79b8dbb3e69818fff4d682}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{A prevailing notion in experimental psychology is that individuals' performance in a task varies gradually in a continuous fashion. In a Stroop task, for example, the true average effect may be 50 ms with a standard deviation of say 30 ms. In this case, some individuals will have greater effects than 50 ms, some will have smaller, and some are forecasted to have negative effects in sign—{}they respond faster to incongruent items than to congruent ones! But are there people who have a true negative effect in Stroop or any other task? We highlight three qualitatively different effects: negative effects, null effects, and positive effects. The main goal of this paper is to develop models that allow researchers to explore whether all three are present in a task: Do all individuals show a positive effect? Are there individuals with truly no effect? Are there any individuals with negative effects? We develop a family of Bayesian hierarchical models that capture a variety of these constraints. We apply this approach to Stroop interference experiments and a near-liminal priming experiment where the prime may be below and above threshold for different people. We show that most tasks people are quite alike—{}for example everyone has positive Stroop effects and nobody fails to Stroop or Stroops negatively. We also show a case that under very specific circumstances, we could entice some people to not Stroop at all.}
+      \field{issn}{1069-9384, 1531-5320}
+      \field{journaltitle}{Psychonomic Bulletin \& Review}
+      \field{month}{6}
+      \field{number}{3}
+      \field{shorttitle}{Some Do and Some Don't?}
+      \field{title}{Some Do and Some Don't? {{Accounting}} for Variability of Individual Difference Structures}
+      \field{volume}{26}
+      \field{year}{2019}
+      \field{pages}{772\bibrangedash 789}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.3758/s13423-018-1522-x
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\UZUZVZ7Q\\Haaf and Rouder - 2019 - Some do and some don’t Accounting for variability.pdf
+      \endverb
+    \endentry
+    \entry{hasher1977}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c84b58c56e9672c810d5bed04fce7154}{%
+           family={Hasher},
+           familyi={H\bibinitperiod},
+           given={Lynn},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=23e7a9765722824cdcb0523037077a60}{%
+           family={Goldstein},
+           familyi={G\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1752eec8570375750c4310c60df8c1a0}{%
+           family={Toppino},
+           familyi={T\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{e4d79ba411c0d7995cd97718e00fce2b}
+      \strng{fullhash}{b857478beb00b6c53f98d6e1d1935742}
+      \strng{bibnamehash}{b857478beb00b6c53f98d6e1d1935742}
+      \strng{authorbibnamehash}{b857478beb00b6c53f98d6e1d1935742}
+      \strng{authornamehash}{e4d79ba411c0d7995cd97718e00fce2b}
+      \strng{authorfullhash}{b857478beb00b6c53f98d6e1d1935742}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00225371}
+      \field{journaltitle}{Journal of Verbal Learning and Verbal Behavior}
+      \field{month}{2}
+      \field{number}{1}
+      \field{title}{Frequency and the Conference of Referential Validity}
+      \field{volume}{16}
+      \field{year}{1977}
+      \field{pages}{107\bibrangedash 112}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1016/S0022-5371(77)80012-1
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\RNZHUSM6\\hasher_1977_journal_of_verbal_learning_and_verbal_behavior.pdf
+      \endverb
+    \endentry
+    \entry{houpt2017}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=272a407c105091dbb8bc4c6841272463}{%
+           family={Houpt},
+           familyi={H\bibinitperiod},
+           given={Joseph\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3b2d91fdad8efda30b3df4ba3e5e3d6e}{%
+           family={Fifi{ć}},
+           familyi={F\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \strng{fullhash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \strng{bibnamehash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \strng{authorbibnamehash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \strng{authornamehash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \strng{authorfullhash}{2eebfeb4158d68b66dcc8bdc86138ddb}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00222496}
+      \field{journaltitle}{Journal of Mathematical Psychology}
+      \field{month}{8}
+      \field{title}{A Hierarchical {{Bayesian}} Approach to Distinguishing Serial and Parallel Processing}
+      \field{volume}{79}
+      \field{year}{2017}
+      \field{pages}{13\bibrangedash 22}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/j.jmp.2017.05.001
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\CAY2DYSS\\Houpt und Fifić - 2017 - A hierarchical Bayesian approach to distinguishing.pdf
+      \endverb
+    \endentry
+    \entry{jeffreys1935}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8ee1b6df972985d58c1190980d9aa387}{%
+           family={Jeffreys},
+           familyi={J\bibinitperiod},
+           given={Harold},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{fullhash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{bibnamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authorbibnamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authornamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authorfullhash}{8ee1b6df972985d58c1190980d9aa387}
+      \field{extraname}{1}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0305-0041, 1469-8064}
+      \field{journaltitle}{Mathematical Proceedings of the Cambridge Philosophical Society}
+      \field{month}{4}
+      \field{number}{02}
+      \field{title}{Some Tests of Significance, Treated by the Theory of Probability}
+      \field{volume}{31}
+      \field{year}{1935}
+      \field{pages}{203\bibrangedash 222}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1017/S030500410001330X
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\RWGCQAUF\\some_tests_of_significance_treated_by_the_theory_of_probability.pdf
+      \endverb
+    \endentry
+    \entry{jeffreys1961}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8ee1b6df972985d58c1190980d9aa387}{%
+           family={Jeffreys},
+           familyi={J\bibinitperiod},
+           given={Harold},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{fullhash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{bibnamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authorbibnamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authornamehash}{8ee1b6df972985d58c1190980d9aa387}
+      \strng{authorfullhash}{8ee1b6df972985d58c1190980d9aa387}
+      \field{extraname}{2}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Theory of Probability}
+      \field{year}{1961}
+      \keyw{Probabilities}
+    \endentry
+    \entry{kass1995}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f4b02af438fca3cda11ad52753b72293}{%
+           family={Kass},
+           familyi={K\bibinitperiod},
+           given={Robert\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=205b9f60128ee13642fa79b6f1330d63}{%
+           family={Raftery},
+           familyi={R\bibinitperiod},
+           given={Adrian\bibnamedelima E.},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \strng{fullhash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \strng{bibnamehash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \strng{authorbibnamehash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \strng{authornamehash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \strng{authorfullhash}{e61d6d710bb087e0f7f4652ba69fc053}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-1459, 1537-274X}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{month}{6}
+      \field{number}{430}
+      \field{title}{Bayes Factors}
+      \field{volume}{90}
+      \field{year}{1995}
+      \field{pages}{773\bibrangedash 795}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1080/01621459.1995.10476572
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\KPXT222Z\\kass_1995_journal_of_the_american_statistical_association.pdf
+      \endverb
+    \endentry
+    \entry{klugkist2007}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b1690bcec94cb909249b6da998810b16}{%
+           family={Klugkist},
+           familyi={K\bibinitperiod},
+           given={Irene},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a0b330c7353d156d6acecd669648416a}{%
+           family={Hoijtink},
+           familyi={H\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{be15187693678fad93c84d625b598f8b}
+      \strng{fullhash}{be15187693678fad93c84d625b598f8b}
+      \strng{bibnamehash}{be15187693678fad93c84d625b598f8b}
+      \strng{authorbibnamehash}{be15187693678fad93c84d625b598f8b}
+      \strng{authornamehash}{be15187693678fad93c84d625b598f8b}
+      \strng{authorfullhash}{be15187693678fad93c84d625b598f8b}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Bayes factor is a useful tool for evaluating sets of inequality and about equality constrained models. In the approach described, the Bayes factor for a constrained model with the encompassing model reduces to the ratio of two proportions, namely the proportion of, respectively, the encompassing prior and posterior in agreement with the constraints. This enables easy and straightforward estimation of the Bayes factor and its Monte Carlo Error. In this set-up, the issue of sensitivity to model specific prior distributions reduces to sensitivity to one prior distribution, that is, the prior for the encompassing model. It is shown that for specific classes of inequality constrained models, the Bayes factors for the constrained with the unconstrained model is virtually independent of the encompassing prior, that is, model selection is virtually objective.}
+      \field{issn}{01679473}
+      \field{journaltitle}{Computational Statistics \& Data Analysis}
+      \field{month}{8}
+      \field{number}{12}
+      \field{title}{The {{Bayes}} Factor for Inequality and about Equality Constrained Models}
+      \field{volume}{51}
+      \field{year}{2007}
+      \field{pages}{6367\bibrangedash 6379}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1016/j.csda.2007.01.024
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\GQL846EK\\Klugkist und Hoijtink - 2007 - The Bayes factor for inequality and about equality.pdf
+      \endverb
+    \endentry
+    \entry{klugkist2005}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b1690bcec94cb909249b6da998810b16}{%
+           family={Klugkist},
+           familyi={K\bibinitperiod},
+           given={Irene},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=73536f49cb6660a5e38a2d0dc36b4aa7}{%
+           family={Laudy},
+           familyi={L\bibinitperiod},
+           given={Olav},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a0b330c7353d156d6acecd669648416a}{%
+           family={Hoijtink},
+           familyi={H\bibinitperiod},
+           given={Herbert},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{40c8d9bc49a7fd982146dc9ae6ef51e4}
+      \strng{fullhash}{f8a2265645e61537cf84cc976678d0b4}
+      \strng{bibnamehash}{f8a2265645e61537cf84cc976678d0b4}
+      \strng{authorbibnamehash}{f8a2265645e61537cf84cc976678d0b4}
+      \strng{authornamehash}{40c8d9bc49a7fd982146dc9ae6ef51e4}
+      \strng{authorfullhash}{f8a2265645e61537cf84cc976678d0b4}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Researchers often have one or more theories or expectations with respect to the outcome of their empirical research. When researchers talk about the expected relations between variables if a certain theory is correct, their statements are often in terms of one or more parameters expected to be larger or smaller than one or more other parameters. Stated otherwise, their statements are often formulated using inequality constraints. In this article, a Bayesian approach to evaluate analysis of variance or analysis of covariance models with inequality constraints on the (adjusted) means is presented. This evaluation contains two issues: estimation of the parameters given the restrictions using the Gibbs sampler and model selection using Bayes factors in the case of competing theories. The article concludes with two illustrations: a one-way analysis of covariance and an analysis of a three-way table of ordered means.}
+      \field{issn}{1939-1463, 1082-989X}
+      \field{journaltitle}{Psychological Methods}
+      \field{month}{12}
+      \field{number}{4}
+      \field{shorttitle}{Inequality Constrained Analysis of Variance}
+      \field{title}{Inequality Constrained Analysis of Variance: {{A Bayesian}} Approach.}
+      \field{volume}{10}
+      \field{year}{2005}
+      \field{pages}{477\bibrangedash 493}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1037/1082-989X.10.4.477
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\ZLEXLWG4\\Klugkist et al. - 2005 - Inequality Constrained Analysis of Variance A Bay.pdf
+      \endverb
+    \endentry
+    \entry{kruschke2013}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=81a0481c4d0c2f7a95cdc42fda92af07}{%
+           family={Kruschke},
+           familyi={K\bibinitperiod},
+           given={John\bibnamedelima K.},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \strng{fullhash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \strng{bibnamehash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \strng{authorbibnamehash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \strng{authornamehash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \strng{authorfullhash}{81a0481c4d0c2f7a95cdc42fda92af07}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1939-2222, 0096-3445}
+      \field{journaltitle}{Journal of Experimental Psychology: General}
+      \field{number}{2}
+      \field{title}{Bayesian Estimation Supersedes the t Test.}
+      \field{volume}{142}
+      \field{year}{2013}
+      \field{pages}{573\bibrangedash 603}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1037/a0029146
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\MCZA6Q3S\\Kruschke - 2013 - Bayesian estimation supersedes the t test..pdf
+      \endverb
+    \endentry
+    \entry{lazer2018}{article}{}
+      \name{author}{16}{}{%
+        {{un=0,uniquepart=base,hash=237effc4004e7d9f3e5a0b19f1e1ae44}{%
+           family={Lazer},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelimb M.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=32bc35c5444a6e2bdd5b9320e1e94ce8}{%
+           family={Baum},
+           familyi={B\bibinitperiod},
+           given={Matthew\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4ccd91bfaf6de87d2510a58724009b53}{%
+           family={Benkler},
+           familyi={B\bibinitperiod},
+           given={Yochai},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=abff43c547820881e66248439eaa0b33}{%
+           family={Berinsky},
+           familyi={B\bibinitperiod},
+           given={Adam\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9788b14e126637a67fdef1e85841646f}{%
+           family={Greenhill},
+           familyi={G\bibinitperiod},
+           given={Kelly\bibnamedelima M.},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e3991fca812b39b0448729fca507968}{%
+           family={Menczer},
+           familyi={M\bibinitperiod},
+           given={Filippo},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=29d8b38481cf361be83022d450e37f50}{%
+           family={Metzger},
+           familyi={M\bibinitperiod},
+           given={Miriam\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ef5bca6f403168706ad93d11351ed60}{%
+           family={Nyhan},
+           familyi={N\bibinitperiod},
+           given={Brendan},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=14ca11670fbe0c75690f2537879ddb4d}{%
+           family={Pennycook},
+           familyi={P\bibinitperiod},
+           given={Gordon},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=795d5f288e25d76e93208ba0af5b04e7}{%
+           family={Rothschild},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=161d56c26b46d73f0f46b97711be9190}{%
+           family={Schudson},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8f6604efac4741d290cc9a5a3ad0c844}{%
+           family={Sloman},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7db9319b9972b60d9670001d1e4afa7d}{%
+           family={Sunstein},
+           familyi={S\bibinitperiod},
+           given={Cass\bibnamedelima R.},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6ceaf7b7326e35b4877a6f678f1067ba}{%
+           family={Thorson},
+           familyi={T\bibinitperiod},
+           given={Emily\bibnamedelima A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8749174d8ea73cb9cc7eda222618b353}{%
+           family={Watts},
+           familyi={W\bibinitperiod},
+           given={Duncan\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=12c0bc1a69796ac1f720541e15a6c92a}{%
+           family={Zittrain},
+           familyi={Z\bibinitperiod},
+           given={Jonathan\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{1f19a4b355ddb0a22f3ab54d01e44ca6}
+      \strng{fullhash}{2ac7a9492fdc4007a02ffe2a620ecbeb}
+      \strng{bibnamehash}{2ac7a9492fdc4007a02ffe2a620ecbeb}
+      \strng{authorbibnamehash}{2ac7a9492fdc4007a02ffe2a620ecbeb}
+      \strng{authornamehash}{1f19a4b355ddb0a22f3ab54d01e44ca6}
+      \strng{authorfullhash}{2ac7a9492fdc4007a02ffe2a620ecbeb}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0036-8075, 1095-9203}
+      \field{journaltitle}{Science}
+      \field{month}{3}
+      \field{number}{6380}
+      \field{title}{The Science of Fake News}
+      \field{volume}{359}
+      \field{year}{2018}
+      \field{pages}{1094\bibrangedash 1096}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1126/science.aao2998
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\I4Q8Q5LS\\Lazer et al. - 2018 - The science of fake news.pdf
+      \endverb
+    \endentry
+    \entry{lebon1895}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=dfa927907b4a915425353d2ab4ba876a}{%
+           family={Le\bibnamedelima Bon},
+           familyi={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Gustave},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Viking}%
+      }
+      \strng{namehash}{dfa927907b4a915425353d2ab4ba876a}
+      \strng{fullhash}{dfa927907b4a915425353d2ab4ba876a}
+      \strng{bibnamehash}{dfa927907b4a915425353d2ab4ba876a}
+      \strng{authorbibnamehash}{dfa927907b4a915425353d2ab4ba876a}
+      \strng{authornamehash}{dfa927907b4a915425353d2ab4ba876a}
+      \strng{authorfullhash}{dfa927907b4a915425353d2ab4ba876a}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Crowd. {{A}} Study of the Popular Mind}
+      \field{year}{1895}
+    \endentry
+    \entry{morey2015}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=67c2ddf598088b6a60cab5b9559833a8}{%
+           family={Morey},
+           familyi={M\bibinitperiod},
+           given={Richard\bibnamedelima D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{718309e9d1f64176f27c4e7c958bef5a}
+      \strng{fullhash}{718309e9d1f64176f27c4e7c958bef5a}
+      \strng{bibnamehash}{718309e9d1f64176f27c4e7c958bef5a}
+      \strng{authorbibnamehash}{718309e9d1f64176f27c4e7c958bef5a}
+      \strng{authornamehash}{718309e9d1f64176f27c4e7c958bef5a}
+      \strng{authorfullhash}{718309e9d1f64176f27c4e7c958bef5a}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{{BayesFactor}}: {{Computation}} of {{Bayes}} Factors for Common Designs}
+      \field{year}{2015}
+    \endentry
+    \entry{nadarevic2017}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d8b9fbaa57018dc61a65407d61cc830f}{%
+           family={Nadarevic},
+           familyi={N\bibinitperiod},
+           given={Lena},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ccb5be35627d4527a056c80683631db}{%
+           family={A{ß}falg},
+           familyi={A\bibinitperiod},
+           given={Andr{é}},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \strng{fullhash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \strng{bibnamehash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \strng{authorbibnamehash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \strng{authornamehash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \strng{authorfullhash}{e1001f9695ab1c4505709db4c8afe8d6}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0340-0727, 1430-2772}
+      \field{journaltitle}{Psychological Research}
+      \field{month}{7}
+      \field{number}{4}
+      \field{shorttitle}{Unveiling the Truth}
+      \field{title}{Unveiling the Truth: Warnings Reduce the Repetition-Based Truth Effect}
+      \field{volume}{81}
+      \field{year}{2017}
+      \field{pages}{814\bibrangedash 826}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/s00426-016-0777-y
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\CADUIQ4H\\10.1007@s00426-016-0777-y.pdf
+      \endverb
+    \endentry
+    \entry{nadarevic2014}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d8b9fbaa57018dc61a65407d61cc830f}{%
+           family={Nadarevic},
+           familyi={N\bibinitperiod},
+           given={Lena},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=37649f26948489eb879057392bfae1b1}{%
+           family={Erdfelder},
+           familyi={E\bibinitperiod},
+           given={Edgar},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bc06949726c438137aa6c7e596534df3}
+      \strng{fullhash}{bc06949726c438137aa6c7e596534df3}
+      \strng{bibnamehash}{bc06949726c438137aa6c7e596534df3}
+      \strng{authorbibnamehash}{bc06949726c438137aa6c7e596534df3}
+      \strng{authornamehash}{bc06949726c438137aa6c7e596534df3}
+      \strng{authorfullhash}{bc06949726c438137aa6c7e596534df3}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Repeatedly seen or heard statements are typically judged to be more valid than statements one has never encountered before. This phenomenon has been referred to as the truth effect. We conducted two experiments to assess the plasticity of the truth effect under different contextual conditions. Surprisingly, we did not find a truth effect in the typical judgment design when using a ten minutes interval between statement repetitions. However, we replicated the truth effect when changing the judgment task at initial statement exposure or when using an interval of one week rather than ten minutes. Because none of the current truth effect theories can fully account for these context effects, we conclude that the cognitive processes underlying truth judgments are more complex than has hitherto been assumed. To close the theoretical gap, we propose a revised fluency attribution hypothesis as a possible explanation of our findings.}
+      \field{issn}{1053-8100}
+      \field{journaltitle}{Consciousness and Cognition}
+      \field{month}{1}
+      \field{title}{Initial Judgment Task and Delay of the Final Validity-Rating Task Moderate the Truth Effect}
+      \field{volume}{23}
+      \field{year}{2014}
+      \field{pages}{74\bibrangedash 84}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1016/j.concog.2013.12.002
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\K46U37RQ\\nadarevic_2014_consciousness_and_cognition.pdf;C\:\\Users\\Martin\\Zotero\\storage\\3QISK9PM\\S105381001300161X.html
+      \endverb
+      \keyw{Context effect,Fluency attribution,Retention interval,Truth effect,Validity rating}
+    \endentry
+    \entry{nadarevic2012}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=d8b9fbaa57018dc61a65407d61cc830f}{%
+           family={Nadarevic},
+           familyi={N\bibinitperiod},
+           given={Lena},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4b6231139561a28b516cf1dcdcee479f}{%
+           family={Meckler},
+           familyi={M\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ae654359c5666894451140274fae958a}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fe503def69882e8239e55a990138ddc4}
+      \strng{fullhash}{f671fe26c67cc5a73eae2b817acd8b00}
+      \strng{bibnamehash}{f671fe26c67cc5a73eae2b817acd8b00}
+      \strng{authorbibnamehash}{f671fe26c67cc5a73eae2b817acd8b00}
+      \strng{authornamehash}{fe503def69882e8239e55a990138ddc4}
+      \strng{authorfullhash}{f671fe26c67cc5a73eae2b817acd8b00}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{[{{An}} Investigation of the Truth Effect and Different Personality Traits]. {{Unpublished}} Raw Data.}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.17605/OSF.IO/6WV4Z
+      \endverb
+    \endentry
+    \entry{nadarevic2011}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d8b9fbaa57018dc61a65407d61cc830f}{%
+           family={Nadarevic},
+           familyi={N\bibinitperiod},
+           given={Lena},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a938cd41375b24361b9b4af8e8fb4eb4}{%
+           family={Rinnewitz},
+           familyi={R\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \strng{fullhash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \strng{bibnamehash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \strng{authorbibnamehash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \strng{authornamehash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \strng{authorfullhash}{9d4c3185952aeeec1276c9e4e5cdc542}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{[{{Judgment}} Mode Instructions Do Not Moderate the Truth Effect]. {{Unpublished}} Raw Data}
+      \field{year}{2011}
+      \verb{doi}
+      \verb 10.17605/OSF.IO/3UAJ7
+      \endverb
+    \endentry
+    \entry{newman2020}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=88cbd89eab3262fc492931b89f1124ad}{%
+           family={Newman},
+           familyi={N\bibinitperiod},
+           given={Eryn.\bibnamedelimi J.},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=10e08bc1c40245e11d85c71ba1fef524}{%
+           family={Jalbert},
+           familyi={J\bibinitperiod},
+           given={Madeline\bibnamedelima C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f80adac13cc206bee44ac5e0c8dfa15f}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Norbert},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ef69ff5f67be15a1438bd6ddb33fd042}{%
+           family={Ly},
+           familyi={L\bibinitperiod},
+           given={Deva\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{359191521fdacbdb2543887143e572c4}
+      \strng{fullhash}{401ef5c745952cb23f9eca661d81dd1f}
+      \strng{bibnamehash}{401ef5c745952cb23f9eca661d81dd1f}
+      \strng{authorbibnamehash}{401ef5c745952cb23f9eca661d81dd1f}
+      \strng{authornamehash}{359191521fdacbdb2543887143e572c4}
+      \strng{authorfullhash}{401ef5c745952cb23f9eca661d81dd1f}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ease of processing—{}cognitive fluency—{}is a central input in assessments of truth, but little is known about individual differences in susceptibility to fluency-based biases in truth assessment. Focusing on two paradigms—{}truthiness and the illusory truth effect—{}we consider the role of Need for Cognition (NFC), an individual difference variable capturing one's preference for elaborative thought. Across five experiments, we replicated basic truthiness and illusory truth effects. We found very little evidence that NFC moderates truthiness. However, we found some evidence that (without an experimental warning), people high on NFC may be more susceptible to the illusory truth effect. This may reflect that elaborative thought increases the fluency with which encoded statements are processed after a delay (thus increasing the illusory truth effect). Future research may fruitfully test whether the influence of NFC and other individual difference measures depends on whether people are making immediate or delayed truth judgments.}
+      \field{issn}{10538100}
+      \field{journaltitle}{Consciousness and Cognition}
+      \field{month}{2}
+      \field{title}{Truthiness, the Illusory Truth Effect, and the Role of Need for Cognition}
+      \field{volume}{78}
+      \field{year}{2020}
+      \field{pages}{102866}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.concog.2019.102866
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\YS5Q2M8L\\Newman et al. - 2020 - Truthiness, the illusory truth effect, and the rol.pdf
+      \endverb
+    \endentry
+    \entry{parks2006}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a28993a28abd66caefd02daafab2e8e3}{%
+           family={Parks},
+           familyi={P\bibinitperiod},
+           given={Colleen\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad909b127a4af157ae41bc9826c6cfa5}{%
+           family={Toth},
+           familyi={T\bibinitperiod},
+           given={Jeffrey\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{d743984b29d476d987a52ad7e3d5c238}
+      \strng{fullhash}{d743984b29d476d987a52ad7e3d5c238}
+      \strng{bibnamehash}{d743984b29d476d987a52ad7e3d5c238}
+      \strng{authorbibnamehash}{d743984b29d476d987a52ad7e3d5c238}
+      \strng{authornamehash}{d743984b29d476d987a52ad7e3d5c238}
+      \strng{authorfullhash}{d743984b29d476d987a52ad7e3d5c238}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Research has shown that repeated statements are rated as more credible than new statements. However, little research has examined whether such ``illusions of truth'' can be produced by contextual (nonmnemonic) influences, or compared to the magnitude of these illusions in younger and older adults. In two experiments, we examined how manipulations of perceptual and conceptual fluency influenced truth and familiarity ratings made by young and older adults. Stimuli were claims about companies or products varying in normative familiarity. Results showed only small effects of perceptual fluency on rated truth or familiarity. In contrast, manipulating conceptual fluency via semantic/textual context had much larger effects on rated truth and familiarity, with the effects modulated by normative company familiarity such that fluency biases were larger for lesser-known companies. In both experiments, young and older adults were equally susceptible to fluency-based biases.}
+      \field{issn}{1382-5585, 1744-4128}
+      \field{journaltitle}{Aging, Neuropsychology, and Cognition}
+      \field{month}{6}
+      \field{number}{2}
+      \field{title}{Fluency, Familiarity, Aging, and the Illusion of Truth}
+      \field{volume}{13}
+      \field{year}{2006}
+      \field{pages}{225\bibrangedash 253}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1080/138255890968691
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\JJ8IPD8Q\\Parks und Toth - 2006 - Fluency, Familiarity, Aging, and the Illusion of T.pdf
+      \endverb
+    \endentry
+    \entry{pennycook2018}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=14ca11670fbe0c75690f2537879ddb4d}{%
+           family={Pennycook},
+           familyi={P\bibinitperiod},
+           given={Gordon},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=259be512cc249756b63a2a988d291709}{%
+           family={Cannon},
+           familyi={C\bibinitperiod},
+           given={Tyrone\bibnamedelima D.},
+           giveni={T\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=187c24b68c32371cc8f611424ad4a73d}{%
+           family={Rand},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{c7c43f47465f488f9974ffe71267c8bb}
+      \strng{fullhash}{9b0163d31a4a79032361ae4730fc7707}
+      \strng{bibnamehash}{9b0163d31a4a79032361ae4730fc7707}
+      \strng{authorbibnamehash}{9b0163d31a4a79032361ae4730fc7707}
+      \strng{authornamehash}{c7c43f47465f488f9974ffe71267c8bb}
+      \strng{authorfullhash}{9b0163d31a4a79032361ae4730fc7707}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1939-2222, 0096-3445}
+      \field{journaltitle}{Journal of Experimental Psychology: General}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{Prior Exposure Increases Perceived Accuracy of Fake News.}
+      \field{volume}{147}
+      \field{year}{2018}
+      \field{pages}{1865\bibrangedash 1880}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1037/xge0000465
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\HLID6B8L\\Pennycook et al. - Prior Exposure Increases Perceived Accuracy of Fak.pdf
+      \endverb
+    \endentry
+    \entry{rcoreteam2019}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=dcdebb6b35bff7c0568bf8c50ef8626d}{%
+           family={{R Core Team}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Vienna, Austria}%
+      }
+      \strng{namehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{fullhash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{bibnamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authorbibnamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authornamehash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \strng{authorfullhash}{dcdebb6b35bff7c0568bf8c50ef8626d}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{R Foundation for Statistical Computing}
+      \field{title}{R: {{A}} Language and Environment for Statistical Computing}
+      \field{year}{2019}
+    \endentry
+    \entry{reber1999}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=75f4914474581d59651995dadb6879c2}{%
+           family={Reber},
+           familyi={R\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f80adac13cc206bee44ac5e0c8dfa15f}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Norbert},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{f2516d58387234b8a6507da89a76bb75}
+      \strng{fullhash}{f2516d58387234b8a6507da89a76bb75}
+      \strng{bibnamehash}{f2516d58387234b8a6507da89a76bb75}
+      \strng{authorbibnamehash}{f2516d58387234b8a6507da89a76bb75}
+      \strng{authornamehash}{f2516d58387234b8a6507da89a76bb75}
+      \strng{authorfullhash}{f2516d58387234b8a6507da89a76bb75}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{10538100}
+      \field{journaltitle}{Consciousness and Cognition}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Effects of Perceptual Fluency on Judgments of Truth}
+      \field{volume}{8}
+      \field{year}{1999}
+      \field{pages}{338\bibrangedash 342}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1006/ccog.1999.0386
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\R5E5T7MT\\reber_1999_consciousness_and_cognition.pdf
+      \endverb
+    \endentry
+    \entry{rouder2017}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=67c2ddf598088b6a60cab5b9559833a8}{%
+           family={Morey},
+           familyi={M\bibinitperiod},
+           given={Richard\bibnamedelima D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \strng{fullhash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \strng{bibnamehash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \strng{authorbibnamehash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \strng{authornamehash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \strng{authorfullhash}{9b547f103ec18bf21051d9d6ce9745cf}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0003-1305, 1537-2731}
+      \field{journaltitle}{The American Statistician}
+      \field{month}{6}
+      \field{shorttitle}{Teaching {{Bayes}}' {{Theorem}}}
+      \field{title}{Teaching {{Bayes}}' Theorem: {{Strength}} of Evidence as Predictive Accuracy}
+      \field{volume}{73}
+      \field{year}{2017}
+      \field{pages}{186\bibrangedash 190}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1080/00031305.2017.1341334
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\T7EERXS6\\Rouder und Morey - 2017 - Teaching Bayes’ theorem Strength of evidence as p.pdf;C\:\\Users\\Martin\\Zotero\\storage\\YJJ9EJXB\\Rouder und Morey - 2017 - Teaching Bayes’ Theorem Strength of Evidence as P.pdf
+      \endverb
+    \endentry
+    \entry{rouder2012}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=67c2ddf598088b6a60cab5b9559833a8}{%
+           family={Morey},
+           familyi={M\bibinitperiod},
+           given={Richard\bibnamedelima D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0b59b3cfe23d6fdc63c7c510fe0e13ae}{%
+           family={Speckman},
+           familyi={S\bibinitperiod},
+           given={Paul\bibnamedelima L.},
+           giveni={P\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8046210c3095a388adbabbe893ce64e3}{%
+           family={Province},
+           familyi={P\bibinitperiod},
+           given={Jordan\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{bfa1a3be97d5e6f07ca16715dfe3cb97}
+      \strng{fullhash}{fdfa4008c98962e9c42b31a796af5acb}
+      \strng{bibnamehash}{fdfa4008c98962e9c42b31a796af5acb}
+      \strng{authorbibnamehash}{fdfa4008c98962e9c42b31a796af5acb}
+      \strng{authornamehash}{bfa1a3be97d5e6f07ca16715dfe3cb97}
+      \strng{authorfullhash}{fdfa4008c98962e9c42b31a796af5acb}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00222496}
+      \field{journaltitle}{Journal of Mathematical Psychology}
+      \field{month}{10}
+      \field{number}{5}
+      \field{title}{Default {{Bayes}} Factors for {{ANOVA}} Designs}
+      \field{volume}{56}
+      \field{year}{2012}
+      \field{pages}{356\bibrangedash 374}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1016/j.jmp.2012.08.001
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\R3LZCZRJ\\Rouder et al. - 2012 - Default Bayes factors for ANOVA designs.pdf
+      \endverb
+    \endentry
+    \entry{rouder2016a}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=67c2ddf598088b6a60cab5b9559833a8}{%
+           family={Morey},
+           familyi={M\bibinitperiod},
+           given={Richard\bibnamedelima D.},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0127560e030afe2fdab5e2b35378c37}{%
+           family={Wagenmakers},
+           familyi={W\bibinitperiod},
+           given={Eric-Jan},
+           giveni={E\bibinithyphendelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{bfa1a3be97d5e6f07ca16715dfe3cb97}
+      \strng{fullhash}{7aec87ba145566d164bd1953d381f160}
+      \strng{bibnamehash}{7aec87ba145566d164bd1953d381f160}
+      \strng{authorbibnamehash}{7aec87ba145566d164bd1953d381f160}
+      \strng{authornamehash}{bfa1a3be97d5e6f07ca16715dfe3cb97}
+      \strng{authorfullhash}{7aec87ba145566d164bd1953d381f160}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2376-6832}
+      \field{journaltitle}{Collabra}
+      \field{month}{5}
+      \field{title}{The Interplay between Subjectivity, Statistical Practice, and Psychological Science}
+      \field{volume}{2}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1525/collabra.28
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\WA3VSRXZ\\Rouder et al. - 2016 - The Interplay between Subjectivity, Statistical Pr.pdf
+      \endverb
+    \endentry
+    \entry{Simmons:etal:2011}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=d426face6f547af8d4e49b327b2690a0}{%
+           family={Simmons},
+           familyi={S\bibinitperiod},
+           given={J.\bibnamedelimi P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=31abfe685fd793159bab7310a1af0c1d}{%
+           family={Nelson},
+           familyi={N\bibinitperiod},
+           given={L.\bibnamedelimi D.},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5d78a53bf397162656346dfbf5bbbe9a}{%
+           family={Simonsohn},
+           familyi={S\bibinitperiod},
+           given={U.},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6aeb0e1cd8848943bf65d3af83ea4891}
+      \strng{fullhash}{e0807fce82ed7c30e1ba28e73e0d94e7}
+      \strng{bibnamehash}{e0807fce82ed7c30e1ba28e73e0d94e7}
+      \strng{authorbibnamehash}{e0807fce82ed7c30e1ba28e73e0d94e7}
+      \strng{authornamehash}{6aeb0e1cd8848943bf65d3af83ea4891}
+      \strng{authorfullhash}{e0807fce82ed7c30e1ba28e73e0d94e7}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Science}
+      \field{title}{False-Positive Psychology: {U}ndisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant}
+      \field{volume}{22}
+      \field{year}{2011}
+      \field{pages}{1359\bibrangedash 1366}
+      \range{pages}{8}
+      \verb{urlraw}
+      \verb https://doi.org/10.1177/0956797611417632
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1177/0956797611417632
+      \endverb
+    \endentry
+    \entry{spiegelhalter2002}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=57d8d2d8275a33928bdfc9d2e4649e03}{%
+           family={Spiegelhalter},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=662d36aab68c2a30c5d655de61aa9f40}{%
+           family={Best},
+           familyi={B\bibinitperiod},
+           given={Nicola\bibnamedelima G.},
+           giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72c956f4cc80d0b12a34e19fbda3e6f4}{%
+           family={Carlin},
+           familyi={C\bibinitperiod},
+           given={Bradley\bibnamedelima P.},
+           giveni={B\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8ee571dbc95e60ce0739d8449cdfb26a}{%
+           family={{van der Linde}},
+           familyi={v\bibinitperiod},
+           given={Angelika},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{751b56d9b49bdbb320ca0dbcc9d825de}
+      \strng{fullhash}{04193ddefae57ede8e4b9706b586cf83}
+      \strng{bibnamehash}{04193ddefae57ede8e4b9706b586cf83}
+      \strng{authorbibnamehash}{04193ddefae57ede8e4b9706b586cf83}
+      \strng{authornamehash}{751b56d9b49bdbb320ca0dbcc9d825de}
+      \strng{authorfullhash}{04193ddefae57ede8e4b9706b586cf83}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{month}{10}
+      \field{number}{4}
+      \field{title}{Bayesian Measures of Model Complexity and Fit}
+      \field{volume}{64}
+      \field{year}{2002}
+      \field{pages}{583\bibrangedash 639}
+      \range{pages}{57}
+      \verb{doi}
+      \verb 10.1111/1467-9868.00353
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\Q7U4Q3JB\\Spiegelhalter et al. - 2002 - Bayesian measures of model complexity and fit.pdf
+      \endverb
+    \endentry
+    \entry{stafford2016}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6115d2b21c3081c01f0d81e12d540dfc}{%
+           family={Stafford},
+           familyi={S\bibinitperiod},
+           given={Tom},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {BBC}%
+      }
+      \strng{namehash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \strng{fullhash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \strng{bibnamehash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \strng{authorbibnamehash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \strng{authornamehash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \strng{authorfullhash}{6115d2b21c3081c01f0d81e12d540dfc}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Liars Create the `Illusion of Truth'}
+      \field{year}{2016}
+    \endentry
+    \entry{thiele2017}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=0a0a08608a7b8bc3effda6a0de1621b3}{%
+           family={Thiele},
+           familyi={T\bibinitperiod},
+           given={Jonathan\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=38d068e8fbdbc00988d84b48fe96dd6c}{%
+           family={Haaf},
+           familyi={H\bibinitperiod},
+           given={Julia\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad57b27dddd6ed080c086fc91c695ca1}{%
+           family={Rouder},
+           familyi={R\bibinitperiod},
+           given={Jeffrey\bibnamedelima N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{fec0b23158869b22dfd146f2db09a681}
+      \strng{fullhash}{f9219451043b0ded9b491878010a53fa}
+      \strng{bibnamehash}{f9219451043b0ded9b491878010a53fa}
+      \strng{authorbibnamehash}{f9219451043b0ded9b491878010a53fa}
+      \strng{authornamehash}{fec0b23158869b22dfd146f2db09a681}
+      \strng{authorfullhash}{f9219451043b0ded9b491878010a53fa}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Systems factorial technology (Townsend and Nozawa, 1995) is a leading methodology for assessing the processing of multiple-feature items. By using certain experimental designs and analyses, researchers can assess whether features are processed in serial, in parallel, or coactively. Current practice is to categorize each individual as displaying one of these three architectures. We argue this approach implicitly assumes heterogeneity of processing strategies across participants. A more scientifically meaningful approach may be to first ask whether all people are serial or parallel or coactive before assuming heterogeneity. We develop a series of Bayesian hierarchical models that captures both situations where everyone follows a common architecture and, alternatively, where there is heterogeneity in architecture. These models use g-prior structures that make computation of Bayes factors convenient. We report an application to investigate Miller's (1956) notion of chunking. We asked participants to compare objects that are composed of separable features simultaneously, a perception task, and sequentially, a memory task. We assessed whether processing changed across the perception and memory tasks with the notion that participants might have to chunk features to store them, and that this chunking might make processing more efficient. The answer is ``no.'' We find a serial architecture for processing for highly separable features (size of circle and the orientation of its diameter) in both the perception and memory tasks. We also find parallel processing for less separable features (first and second digits in a two-digit number) in both perception and memory tasks. Taken together, while processing may depend on the separability of features, it does not vary across perception and memory. As importantly, we find that all people had the same processing strategy; that is models that stated no heterogeneity outperformed those with heterogeneity. This result indicates that architecture may be universal in this setting and not under strategic control.}
+      \field{issn}{00222496}
+      \field{journaltitle}{Journal of Mathematical Psychology}
+      \field{month}{12}
+      \field{shorttitle}{Is There Variation across Individuals in Processing?}
+      \field{title}{Is There Variation across Individuals in Processing? {{Bayesian}} Analysis for Systems Factorial Technology}
+      \field{volume}{81}
+      \field{year}{2017}
+      \field{pages}{40\bibrangedash 54}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1016/j.jmp.2017.09.002
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\PJVNYS2V\\Thiele et al. - 2017 - Is there variation across individuals in processin.pdf
+      \endverb
+    \endentry
+    \entry{unkelbach2019}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d5a7689d145b74085416395cce91d571}{%
+           family={Unkelbach},
+           familyi={U\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3b2681a591c2082e5df7bf9dfd7d938d}{%
+           family={Koch},
+           familyi={K\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=979e0fe097e0ae39700e8362869fdce2}{%
+           family={Silva},
+           familyi={S\bibinitperiod},
+           given={Rita\bibnamedelima R.},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bedd9f23dcd9a93981795fddf43a284c}{%
+           family={{Garcia-Marques}},
+           familyi={G\bibinitperiod},
+           given={Teresa},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{e27a78c501b3a06bb791d61b04c463eb}
+      \strng{fullhash}{5abc75a54226d84ab873d97976733f04}
+      \strng{bibnamehash}{5abc75a54226d84ab873d97976733f04}
+      \strng{authorbibnamehash}{5abc75a54226d84ab873d97976733f04}
+      \strng{authornamehash}{e27a78c501b3a06bb791d61b04c463eb}
+      \strng{authorfullhash}{5abc75a54226d84ab873d97976733f04}
+      \field{sortinit}{U}
+      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{People believe repeated information more than novel information; they show a repetition-induced truth effect. In a world of ``alternative facts,'' ``fake news,'' and strategic information management, understanding this effect is highly important. We first review explanations of the effect based on frequency, recognition, familiarity, and coherent references. On the basis of the latter explanation, we discuss the relations of these explanations. We then discuss implications of truth by repetition for the maintenance of false beliefs and ways to change potentially harmful false beliefs (e.g., ``Vaccination causes autism''), illustrating that the truth-by-repetition phenomenon not only is of theoretical interest but also has immediate practical relevance.}
+      \field{issn}{0963-7214, 1467-8721}
+      \field{journaltitle}{Current Directions in Psychological Science}
+      \field{month}{6}
+      \field{number}{3}
+      \field{shorttitle}{Truth by Repetition}
+      \field{title}{Truth by Repetition: {{Explanations}} and Implications}
+      \field{volume}{28}
+      \field{year}{2019}
+      \field{pages}{247\bibrangedash 253}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1177/0963721419827854
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\PHY8IJJ4\\Unkelbach et al. - 2019 - Truth by Repetition Explanations and Implications.pdf
+      \endverb
+    \endentry
+    \entry{unkelbach2017}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d5a7689d145b74085416395cce91d571}{%
+           family={Unkelbach},
+           familyi={U\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8228653709edab9ecd95e2caae6fd463}{%
+           family={Rom},
+           familyi={R\bibinitperiod},
+           given={Sarah\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \strng{fullhash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \strng{bibnamehash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \strng{authorbibnamehash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \strng{authornamehash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \strng{authorfullhash}{b8ffbb74a81572cfed6b00023fc4fece}
+      \field{sortinit}{U}
+      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{People are more likely to judge repeated statements as true compared to new statements, a phenomenon known as the illusory truth effect. The currently dominant explanation is an increase in processing fluency caused by prior presentation. We present a new theory to explain this effect. We assume that people judge truth based on coherent references for statements in memory. Due to prior presentation, repeated statements have more coherently linked references; thus, a repetition-induced truth effect follows. Five experiments test this theory. Experiment 1–{}3 show that both the amount and the coherence of references for a repeated statement influence judged truth. Experiment 4 shows that people also judge new statements more likely ``true'' when they share references with previously presented statements. Experiment 5 realizes theoretically predicted conditions under which repetition should not influence judged truth. Based on these data, we discuss how the theory relates to other explanations of repetition-induced truth and how it may integrate other truth-related phenomena and belief biases.}
+      \field{issn}{00100277}
+      \field{journaltitle}{Cognition}
+      \field{month}{3}
+      \field{title}{A Referential Theory of the Repetition-Induced Truth Effect}
+      \field{volume}{160}
+      \field{year}{2017}
+      \field{pages}{110\bibrangedash 126}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1016/j.cognition.2016.12.016
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\Martin\\Zotero\\storage\\XYV5897S\\Unkelbach und Rom - 2017 - A referential theory of the repetition-induced tru.pdf
+      \endverb
+    \endentry
+    \entry{zellner1986}{inbook}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=09ab674a5b5c240bde8e56bb108a8095}{%
+           family={Zellner},
+           familyi={Z\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=5cee38635bffdd3909d2262165ee52c7}{%
+           family={Goel},
+           familyi={G\bibinitperiod},
+           given={P.\bibnamedelimi K.},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=09ab674a5b5c240bde8e56bb108a8095}{%
+           family={Zellner},
+           familyi={Z\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Amsterdam, NL}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{fullhash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{bibnamehash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{authorbibnamehash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{authornamehash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{authorfullhash}{09ab674a5b5c240bde8e56bb108a8095}
+      \strng{editorbibnamehash}{1f32c9eb37e181f16e340cfb11bd1438}
+      \strng{editornamehash}{1f32c9eb37e181f16e340cfb11bd1438}
+      \strng{editorfullhash}{1f32c9eb37e181f16e340cfb11bd1438}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Bayesian Inference and Decision Techniques: {{Essays}} in Honour of {{Bruno}} de {{Finetti}}}
+      \field{title}{On Assessing Prior Distributions and {{Bayesian}} Regression Analysis with G-Prior Distributions}
+      \field{year}{1986}
+      \field{pages}{233\bibrangedash 243}
+      \range{pages}{11}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

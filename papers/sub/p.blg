@@ -1,0 +1,24 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'p.blg'
+[101] biber-MSWIN64:322> INFO - === 
+[125] Biber.pm:415> INFO - Reading 'p.bcf'
+[246] Biber.pm:943> INFO - Found 44 citekeys in bib section 0
+[263] Biber.pm:4256> INFO - Processing section 0
+[263] Utils.pm:75> INFO - Globbing data source 'bibliography.bib'
+[272] Utils.pm:91> INFO - Globbed data source 'bibliography.bib' to bibliography.bib
+[272] Utils.pm:75> INFO - Globbing data source 'lab.bib'
+[272] Utils.pm:91> INFO - Globbed data source 'lab.bib' to lab.bib
+[287] Biber.pm:4455> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[360] bibtex.pm:1653> INFO - LaTeX decoding ...
+[3209] bibtex.pm:1471> INFO - Found BibTeX data source 'bibliography.bib'
+[3618] Biber.pm:4455> INFO - Looking for bibtex format file 'lab.bib' for section 0
+[3830] bibtex.pm:1653> INFO - LaTeX decoding ...
+[9583] bibtex.pm:1471> INFO - Found BibTeX data source 'lab.bib'
+[9981] Utils.pm:304> WARN - BibTeX subsystem: C:\Users\Martin\AppData\Local\Temp\biber_tmp_0mE2\lab.bib_16080.utf8, line 35918, warning: 134 characters of junk seen at toplevel
+[10145] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[10145] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[10145] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[10145] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[10203] bbl.pm:652> INFO - Writing 'p.bbl' with encoding 'UTF-8'
+[10245] bbl.pm:755> INFO - Output to p.bbl
+[10252] Biber.pm:128> INFO - WARNINGS: 1

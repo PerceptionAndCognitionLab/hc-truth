@@ -1,0 +1,1348 @@
+---
+title             : "The truth revisited: Bayesian analysis of individual differences in the truth effect"
+shorttitle        : "Individual differences in the truth effect"
+
+author: 
+  - name: Martin Schnuerch
+    affiliation: 1
+    corresponding: yes    # Define only one corresponding author
+    email: martin.schnuerch@psychologie.uni-mannheim.de
+    address: B6, 30-32, 68159 Mannheim
+  - name: Lena Nadarevic
+    affiliation: 1
+  - name: Jeffrey N. Rouder
+    affiliation: 2
+    
+affiliation       :
+  - id: 1
+    institution: University of Mannheim
+  - id: 2
+    institution: University of California, Irvine
+
+
+author_note       : "This research was supported by a grant from the Deutsche Forschungsgemeinschaft (DFG, GRK 2277) to the research training group Statistical Modeling in Psychology (SMiP)."
+
+abstract: |
+  The repetition-induced truth effect refers to a phenomenon where people rate repeated statements as more likely true than novel statements. In this paper we document *qualitative* individual differences in the effect. While the overwhelming majority of participants display the usual *positive* truth effect, a minority are the opposite---they reliably discount the validity of repeated statements, what we refer to as *negative* truth effect. We examine 8 truth-effect data sets where individual-level data are curated. These sets are composed of 1,105 individuals performing 38,904 judgments. Through Bayes factor model comparison, we show that reliable negative truth effects occur in 5 of the 8 data sets. The negative truth effect is informative because it seems unreasonable that the mechanisms mediating the positive truth effect are the same that lead to a discounting of repeated statements' validity. Moreover, the presence of qualitative differences motivates a different type of analysis of individual differences based on ordinal (i.e., Which sign does the effect have?) rather than metric measures. To our knowledge, this paper reports the first such reliable qualitative differences in a cognitive task.
+  
+keywords          : "Individual differences, qualitative differences, truth effect, hierarchical models, Bayesian model comparison"
+
+bibliography      : ["bibliography.bib", "lab.bib"]
+figsintext        : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : no
+
+biblio-style      : "apa"
+class             : "man"
+header-includes:
+   - \usepackage{bm}
+   - \usepackage{pcl}
+   - \usepackage{amsmath}
+   - \usepackage[utf8]{inputenc}
+   - \usepackage{booktabs}
+   - \usepackage{tabularx}
+   - \usepackage{longtable,tabu}
+   - \usepackage[font=footnotesize]{caption}
+output:
+  papaja::apa6_pdf:
+    citation_package: biblatex
+    
+appendix:
+  - "appendix_data.Rmd"
+  - "appendix_priors.Rmd"
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(papaja)
+library(MCMCpack)
+library(BayesFactor)
+library(plyr)
+library(tidyverse)
+library(cowplot)
+library(lemon)
+library(knitr)
+library(kableExtra)
+library(reshape2)
+library(grid)
+library(gridExtra)
+library(spatialfil)
+library(tmvtnorm)
+library(msm)
+library(ggpubr)
+library(scales)
+library(httr)
+library(readxl)
+```
+
+```{r functions}
+all_bfs <- function(data, g, rscale, k = 10000, progress = FALSE){
+  
+  # Note: Data input must be df with columns
+  # sub, item, cond, Y (ranging from -1 to 1)
+
+  sub <- data$sub
+  item <- data$item
+  cond <- data$cond
+  Y <- data$Y
+  N <- nrow(data)
+  I <- length(unique(sub))
+  gMap <- rep(g, c(I, 1, 1, I))
+  
+  Xsub <- matrix(0, nrow = N, ncol = I)
+  for(n in 1:N) Xsub[n, sub[n]] = 1
+  
+  Xitem <- item
+  
+  Xcond <- cond
+  
+  XsubCond <- matrix(0, nrow = N, ncol = I)
+  for(n in 1:N) XsubCond[n, sub[n]] = Xcond[n]
+  
+  X <- cbind(Xsub, Xitem, Xcond, XsubCond)
+  
+  if(progress) cat("Computing Bayes factors...\n")
+  
+  # null model
+  M_n <- nWayAOV(Y, X[,1:(I+1)], gMap[1:(I+1)], 
+                 rscale[1:2], progress = progress, 
+                 iterations = k)
+  
+  # one model
+  M_o <- nWayAOV(Y, X[,1:(I+1+1)], gMap[1:(I+1+1)], 
+                 rscale[1:3], progress = progress,
+                 iterations = k)
+  
+  # full model
+  M_f <- nWayAOV(Y, X, gMap, rscale, progress = progress,
+                 iterations = k)
+
+  # Bayes Factors -----------------------------------------------------------
+  
+  if(progress) cat("Generating posterior samples...\n")
+  
+  M_f_post <- nWayAOV(Y, X, gMap, rscale, iterations = k, posterior = TRUE, progress = progress)
+  
+  theta_post <- M_f_post[,(1 + I + 1 + 1 + 1):(1 + I + 1 + 1 + I)]
+  nu_post <- M_f_post[,(1 + I + 1 + 1)]
+  for(i in 1:I){
+    theta_post[,i] <- theta_post[,i] + nu_post
+  }
+  n_post <- max(mean(apply(theta_post, 1, function(x) all(x > 0))),
+                1/k)
+  
+  post_positive <- apply(theta_post, 2, function(x) mean(x > 0))
+  
+  prior_g_t <- rinvgamma(k, .5, (rscale[4]^2)/2)
+  prior_g_e <- rinvgamma(k, .5, (rscale[3]^2)/2)
+  prior_eta <- rnorm(k, 0, sqrt(prior_g_e))
+  theta_prior <- matrix(0, nrow = k, ncol = I)
+  for(m in 1:k){
+    theta_prior[m,] <- rnorm(I, prior_eta[m], sqrt(prior_g_t[m]))
+  }
+  n_prior <- max(mean(apply(theta_prior, 1, function(x) all(x > 0))),
+                 1/k)
+  
+  BF_0b <- exp(M_n$bf)
+  BF_1b <- exp(M_o$bf)
+  BF_fb <- exp(M_f$bf)
+  BF_f1 <- exp(M_f$bf - M_o$bf)
+  BF_f0 <- exp(M_f$bf - M_n$bf)
+  BF_10 <- exp(M_o$bf - M_n$bf)
+  BF_fp <- exp(log(n_post) - log(n_prior))
+  BF_pb <- exp(log(1/BF_fp) - log(1/BF_fb))
+  BF_p0 <- exp(log(1/BF_fp) - log(1/BF_f0))
+  BF_p1 <- exp(log(BF_p0) - log(BF_10))
+  
+  bayes_factors <- matrix(0, nrow = 4, ncol = 4)
+  bayes_factors[1,] <- c(BF_0b, 1/BF_10, 1/BF_p0, 1/BF_f0)
+  bayes_factors[2,] <- c(BF_10, BF_1b, 1/BF_p1, 1/BF_f1)  
+  bayes_factors[3,] <- c(BF_p0, BF_p1, BF_pb, 1/BF_fp)
+  bayes_factors[4,] <- c(BF_f0, BF_f1, BF_fp, BF_fb)
+  dimnames(bayes_factors) = list(c("M0", "M1", "Mp", "Mf"),
+                                 c("M0", "M1", "Mp", "Mf"))
+  
+  return(list(
+    M0 = M_n,
+    M1 = M_o,
+    Mf = M_f,
+    MF_posteriors = M_f_post,
+    nu = nu_post,
+    theta = theta_post,
+    bf = bayes_factors,
+    prob = post_positive))
+}
+
+my_theme <-  theme_classic() + 
+  theme(panel.border=element_blank(), 
+        axis.line = element_line(), 
+        axis.ticks = element_line(color='black'),
+        axis.text.x = element_text(color = "black",
+                                   vjust = -2),
+        axis.text.y = element_text(color = "black",
+                                   hjust = 1),
+        text = element_text(size = 10),
+        plot.title = element_text(size = 10))
+
+comp_out <- function(data, res){
+  obs <- data %>% 
+    group_by(sub, cond) %>% 
+    dplyr::summarise(tr = mean(Y),
+                     v = var(Y),
+                     k = n()) %>% 
+    pivot_wider(names_from = cond,
+                values_from = c(tr, v)) %>% 
+    dplyr::mutate(obs_te = `tr_0.5` - `tr_-0.5`,
+                  sd = s_d(`v_0.5`, `v_-0.5`, `k`),
+                  o_ll = obs_te - qt(.975, (k-1))*sd,
+                  o_ul = obs_te + qt(.975, (k-1))*sd) %>% 
+    dplyr::arrange(obs_te) %>% 
+    ungroup() %>% 
+    dplyr::mutate(index = seq_along(sub))
+  
+  theta <- res$theta
+  mns <- colMeans(theta)
+  ll <- aaply(theta,
+              2,
+              quantile, 
+              probs = .025)
+  ul <- aaply(theta,
+              2,
+              quantile, 
+              probs = .975)
+  probs <- aaply(theta, 
+                 2,
+                 function(x) mean(x > 0))
+  data.frame(sub = sort(unique(obs$sub)), 
+             mns, ll, ul, probs) %>% 
+    merge(obs, by = "sub") %>% 
+    dplyr::arrange(index)
+}
+
+plot_obs <- function(out, ylim, title, ...){
+  out <- out %>% 
+    mutate(cut = ifelse(obs_te < 0, "a","b"))
+  if(length(unique(out$cut)) > 1) cut_val = c("red", "black")
+  else cut_val = "black"
+  ggplot(out, aes(x = index)) +
+    geom_hline(yintercept = 0, color = "dimgray") + 
+    geom_hline(yintercept = mean(out$obs_te), 
+               linetype = "dashed", color = "dimgray") +
+    geom_ribbon(aes(ymin = o_ll, ymax = o_ul), alpha = 0.1) +
+    geom_line(aes(y = obs_te), lwd = .75) +
+    geom_line(aes(y = obs_te, color = cut), lwd = .75) +
+    scale_color_manual(values = cut_val) +
+    labs(title = title,
+         x = "Participants", y = "Observed Effect") +
+    scale_y_continuous(limits = ylim,
+                       labels = number_format(accuracy = .1)) +
+    scale_x_continuous(limits = c(1, nrow(out)), 
+                       breaks = c(1, nrow(out))) +
+    coord_cartesian(clip = "off") +
+    coord_capped_cart(bottom='both', left = "both") +
+    my_theme + 
+    theme(legend.position = "none") +
+    theme(...)
+}
+
+plot_theta <- function(out, ylim, title, ...){
+  out <- out %>% 
+    mutate(cut = ifelse(mns < 0, "a","b"))
+  if(length(unique(out$cut)) > 1) cut_val = c("red", "black")
+  else cut_val = "black"
+  ggplot(out, aes(x = index)) +
+    geom_hline(yintercept = 0, color = "dimgray") + 
+    geom_ribbon(aes(ymin = ll, ymax = ul), 
+                alpha = 0.1) +
+    geom_line(aes(y = obs_te), color = "gray", lwd = .5) +
+    geom_line(aes(y = mns), lwd = .75) + 
+    geom_line(aes(y = mns, color = cut), lwd = .75) + 
+    scale_color_manual(values = cut_val) +
+    labs(title = title,
+         x = "Participants", y = expression(paste("Estimated Effect ", theta[i]))) +
+    scale_y_continuous(limits = ylim,
+                       labels = number_format(accuracy = .1)) +
+    scale_x_continuous(limits = c(1, nrow(out)), 
+                       breaks = c(1, nrow(out))) +
+    coord_cartesian(clip = "off") +
+    coord_capped_cart(bottom='both', left = "both") +
+    my_theme + theme(legend.position = "none") +
+    theme(...)
+}
+
+plot_probs <- function(out, title, size = .75, ext = c(10, 10)){
+  out <- out %>% 
+    mutate(cut = ifelse(mns < 0, "1", "2"))
+  if(length(unique(out$cut)) > 1) cut_val = c("red", "black")
+  else cut_val = "black"
+  ggplot(out, aes(x = index)) +
+    # geom_hline(yintercept = c(.25, .75), linetype = "dashed",
+    #            color = "grey", lwd = .5) +
+    geom_rect(data = data.frame(xmin = 1 - ext[1], xmax = nrow(out) + ext[2], 
+                                ymin = .25, ymax = .75),
+              mapping = aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+              alpha = 0.2, fill = "grey", inherit.aes = FALSE) +
+    #geom_point(aes(y = probs, color = cut), size = size) +
+    geom_line(aes(y = probs), lwd = .75) + 
+    geom_line(aes(y = probs, color = cut), lwd = .75) + 
+    scale_color_manual(values = cut_val,
+                       labels = c("", "")) +
+    labs(title = title,
+         x = "Participants", 
+         y = expression(paste("P(", theta[i], " > 0|Data)"))) +
+    scale_y_continuous(limits = c(0,1)) +
+    coord_capped_cart(xlim = c(1, nrow(out)),
+                               bottom='both', left = "both") +
+    scale_x_continuous(breaks = c(1, nrow(out))) +
+    my_theme +
+    theme(legend.position = "none")
+}
+
+figMod <- function(mat, top, x.title, y.title, title = NULL, rowtitle = " ", alpha = 0,  ...){
+  mat <- melt(mat)
+  p <- ggplot(mat, aes(x = Var1, y = Var2)) + 
+    geom_raster(aes(fill=value)) +
+    scale_fill_gradient(limits = c(0, top),
+                        low="white", high="black") +
+    geom_point(aes(x = 80.5, y = 80.5), size = 1, alpha = alpha) +
+    geom_hline(yintercept = 80.5, linetype = "dashed", color = "lightgrey") +
+    geom_vline(xintercept = 80.5, linetype = "dashed", color = "lightgrey") +
+    scale_x_continuous(breaks = c(0, 40.25, 80.5, 120.75, 161),
+                       labels = c(-2, -1, 0, 1, 2),
+                       expand = c(0.01,0)) +
+    scale_y_continuous(breaks = c(0, 40.25, 80.5, 120.75, 161),
+                       labels = c(-2, -1, 0, 1, 2),
+                       expand = c(0.01, 0)) +
+    theme_bw() +
+    coord_cartesian(clip = "off") +
+    labs(x = x.title, 
+         y = y.title, title = title) +
+    theme(panel.background = element_blank(),
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(),
+          axis.ticks.length = unit(.2, "cm"),
+          plot.title = element_text(hjust = .5),
+          legend.position = "none") +
+    theme(...)
+  arrangeGrob(p, left = textGrob(rowtitle, rot = 90, vjust = 0))
+}
+
+get_sensitivity <- function(sensitivity, x, mod){
+  k <- c(6, 7)[x]
+  a <- numeric(0)
+  for(i in 1:8){
+    a <- cbind(a, sensitivity[[x]][[i]]$bf[, mod])
+  }
+  a <- cbind(a, res[[k]]$bf[, mod])
+  a[mod,] <- 1
+  a <- data.frame(a) %>% 
+    mutate(model = 1:4) %>% 
+    pivot_longer(1:9, 
+                 names_to = "setting",
+                 values_to = "bf") %>% 
+    mutate(setting = dense_rank(setting),
+           model = factor(model))
+  return(a)
+}
+
+plot_sensitivity <- function(x, lab, lim){
+  ggplot(x, aes(setting, bf)) +
+    geom_line(aes(color = model), lwd = .75, 
+              linetype = "dotted") +
+    geom_point(aes(color = model), size = 2) +
+    scale_y_log10("Order of Magnitude",
+                  limits = 1*10^c(lim[1], lim[2]),
+                  breaks = 1*10^lab,
+                  labels = as.character(lab)) +
+    scale_color_manual(element_blank(),
+                       values = c("dodgerblue3",
+                                  "darkorange2",
+                                  "chartreuse3",
+                                  "firebrick3"),
+                       labels = c("Null",
+                                  "Common",
+                                  "Positive",
+                                  "Unconstrained")) +
+    theme_classic() +
+    scale_x_continuous("\nPrior Setting", breaks = 1:9,
+                       labels = c(LETTERS[1:8], "*")) +
+    my_theme +
+    coord_capped_cart(bottom='both', left = "both") +
+    theme(axis.ticks.length = unit(.2, "cm"))
+}
+
+s_d <- Vectorize(function(v1, v2, k){
+  sqrt(v1/k + v2/k)
+}, c("v1", "v2", "k"))
+```
+
+```{r data, cache=TRUE}
+dat1 <- read_csv(url("https://osf.io/cvpmr/download")) %>% 
+  dplyr::filter(runningtrial == "TruthJudgment") %>% 
+  dplyr::select(subject, statement, status, repeated, truthrating) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repeated == "No", -0.5, 0.5),
+                Y = truthrating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3)/2)
+
+dat2 <- read_csv(url("https://osf.io/jfz25/download")) %>% 
+  dplyr::filter(runningtrial == "TruthJudgment") %>% 
+  dplyr::select(subject, statement, status, repeated, truthrating) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repeated == "No", -0.5, 0.5),
+                Y = truthrating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3)/2)
+
+dat3 <- read_csv(url("https://osf.io/4znvx/download")) %>% 
+  dplyr::filter(phase == 2 & filter == "selected" & group == 2) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repetition == "No", -0.5, 0.5),
+                Y = trating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5) 
+
+dat4 <- read_csv(url("https://osf.io/qz2rg/download")) %>% 
+  dplyr::filter(phase == 2 & filter == "selected" & group == 2) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repetition == "No", -0.5, 0.5),
+                Y = trating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5) 
+
+dat5 <- read_csv(url("https://osf.io/qsrw5/download")) %>% 
+  dplyr::filter(phase == 3) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repeated_phase3 == "No", -0.5, 0.5),
+                Y = trating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5)
+
+dat6 <- read_csv(url("https://osf.io/amu4w/download")) %>% 
+  dplyr::filter(phase == 2 & group == 2) %>% 
+  dplyr::mutate(item = ifelse(status, 0.5, -0.5),
+                sub = as.integer(as.factor(subject)),
+                cond = ifelse(repetition == "No", -0.5, 0.5),
+                Y = trating) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5)
+
+# store excel sheet locally
+GET("https://osf.io/bxuj2/download", 
+    write_disk(tf <- tempfile(fileext = ".xlsx")))
+
+dat7 <- read_excel(tf, "Raw") %>% 
+  dplyr::select(P, Counterbalance, `Initial Rating`, 
+                starts_with("Final Truth Rating")) %>% 
+  dplyr::filter(`Initial Rating` == "interest") %>% 
+  pivot_longer(c(4:123), names_prefix = "Final Truth Rating - ", 
+               names_to = "item", values_to = "Y") %>% 
+  dplyr::mutate(cond = rep(LETTERS[1:4], each = 30, 52),
+                item = ifelse(cond %in% c("A", "B"), -.5, .5),
+                cond = ifelse(Counterbalance == 1 & cond %in% c("A", "C"), 1,
+                              ifelse(Counterbalance == 2 & cond %in% c("B", "C"), 1, 0)),
+                sub = as.integer(as.factor(P))) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5,
+                cond = cond - .5)
+unlink(tf)
+
+dat8 <- read_tsv(url("https://osf.io/tc65a/download")) %>% 
+  dplyr::mutate(sub = as.numeric(row.names(.))) %>% 
+  dplyr::select(starts_with("True"), starts_with("False"),
+                Condition, sub) %>% 
+  dplyr::select(sub, Condition, ends_with("2")) %>% 
+  pivot_longer(3:22,
+               names_to = "item",
+               values_to = "Y") %>% 
+  dplyr::filter(!(sub %in% sub[which(is.na(Y))])) %>% 
+  dplyr::mutate(sub = dense_rank(sub),
+                item = rep(1:20, length(unique(sub))),
+                cond = ifelse(Condition == 1 & item %in% c(1:5, 11:15),
+                              1, ifelse(Condition == 2 & item %in% c(6:10, 16:20), 
+                                        1,0)),
+                item = rep(c(.5, -.5), each = 10, times = length(unique(sub)))) %>% 
+  dplyr::select(sub, item, cond, Y) %>% 
+  dplyr::mutate(Y = (Y - 3.5)/2.5,
+                cond = cond - .5)
+```
+
+```{r descriptive_stats, cache=TRUE}
+res <- matrix(ncol = 7, nrow = 8,
+              dimnames = list(NULL, c("I", "J", "obs", "sd",
+                                      "t", "df", "d")))
+
+# Set 1 -------------------------------------------------------------------
+
+data <- dat1 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[1,1] <- length(data$obs_te)
+res[1,2] <- unique(data$J)*2
+res[1,3] <- mean(data$obs_te)
+res[1,4] <- sd(data$obs_te)
+res[1,5] <- tt$statistic
+res[1,6] <- tt$parameter
+res[1,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+
+# Set 2 -------------------------------------------------------------------
+
+data <- dat2 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[2,1] <- length(data$obs_te)
+res[2,2] <- unique(data$J)*2
+res[2,3] <- mean(data$obs_te)
+res[2,4] <- sd(data$obs_te)
+res[2,5] <- tt$statistic
+res[2,6] <- tt$parameter
+res[2,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+
+# Set 3 -------------------------------------------------------------------
+
+data <- dat3 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[3,1] <- length(data$obs_te)
+res[3,2] <- unique(data$J)*2
+res[3,3] <- mean(data$obs_te)
+res[3,4] <- sd(data$obs_te)
+res[3,5] <- tt$statistic
+res[3,6] <- tt$parameter
+res[3,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+
+# Set 4 -------------------------------------------------------------------
+
+data <- dat4 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[4,1] <- length(data$obs_te)
+res[4,2] <- unique(data$J)*2
+res[4,3] <- mean(data$obs_te)
+res[4,4] <- sd(data$obs_te)
+res[4,5] <- tt$statistic
+res[4,6] <- tt$parameter
+res[4,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+# Set 5 -------------------------------------------------------------------
+
+data <- dat5 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[5,1] <- length(data$obs_te)
+res[5,2] <- unique(data$J)*2
+res[5,3] <- mean(data$obs_te)
+res[5,4] <- sd(data$obs_te)
+res[5,5] <- tt$statistic
+res[5,6] <- tt$parameter
+res[5,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+# Set 6 -------------------------------------------------------------------
+
+data <- dat6 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[6,1] <- length(data$obs_te)
+res[6,2] <- unique(data$J)*2
+res[6,3] <- mean(data$obs_te)
+res[6,4] <- sd(data$obs_te)
+res[6,5] <- tt$statistic
+res[6,6] <- tt$parameter
+res[6,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+# Set 7 -------------------------------------------------------------------
+
+data <- dat7 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[7,1] <- length(data$obs_te)
+res[7,2] <- unique(data$J)*2
+res[7,3] <- mean(data$obs_te)
+res[7,4] <- sd(data$obs_te)
+res[7,5] <- tt$statistic
+res[7,6] <- tt$parameter
+res[7,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+# Set 8 -------------------------------------------------------------------
+
+data <- dat8 %>% 
+  group_by(sub, cond) %>% 
+  dplyr::summarise(tr = mean(Y),
+                   J = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = cond,
+              values_from = tr) %>% 
+  dplyr::mutate(obs_te = `0.5` - `-0.5`)
+
+tt <- t.test(data$`0.5`, data$`-0.5`, paired = T)
+
+res[8,1] <- length(data$obs_te)
+res[8,2] <- unique(data$J)*2
+res[8,3] <- mean(data$obs_te)
+res[8,4] <- sd(data$obs_te)
+res[8,5] <- tt$statistic
+res[8,6] <- tt$parameter
+res[8,7] <- mean(data$obs_te)/sd(data$obs_te)
+
+descriptives <- as.data.frame(res)
+rm(data, res, tt)
+
+```
+
+```{r estimation, cache=TRUE}
+gMap <- 0:3
+r <- c(2, 2, .5, .5)
+res1 <- all_bfs(dat1, gMap, r)
+res2 <- all_bfs(dat2, gMap, r)
+res3 <- all_bfs(dat3, gMap, r)
+res4 <- all_bfs(dat4, gMap, r)
+res5 <- all_bfs(dat5, gMap, r)
+res6 <- all_bfs(dat6, gMap, r)
+res7 <- all_bfs(dat7, gMap, r)
+res8 <- all_bfs(dat8, gMap, r)
+```
+
+```{r prepare_figures}
+
+out <- comp_out(dat1, res1)
+o1 <- plot_obs(out, c(-2, 2), "Set 1")
+o1 <- arrangeGrob(o1,top = textGrob("\nObserved", 
+                                    rot = 0, vjust = 0))
+t1 <- plot_theta(out, c(-2, 2), "Set 1")
+t1 <- arrangeGrob(t1, top = textGrob("\nModel Estimates", 
+                                     rot = 0, vjust = 0))
+p1 <- plot_probs(out, "Set 1", ext = c(12, 8))
+
+out <- comp_out(dat2, res2)
+o2 <- plot_obs(out, c(-1.2, 2), "Set 2") 
+t2 <- plot_theta(out, c(-1.2, 2), "Set 2")
+p2 <- plot_probs(out, "Set 2", ext = c(10, 4))
+
+out <- comp_out(dat3, res3)
+o3 <- plot_obs(out, c(-.5, 1), "Set 3") 
+t3 <- plot_theta(out, c(-.5, 1), "Set 3")
+p3 <- plot_probs(out, "Set 3", ext = c(2, 1))
+
+out <- comp_out(dat4, res4)
+o4 <- plot_obs(out, c(-.6, 1.5), "Set 4") 
+t4 <- plot_theta(out, c(-.6, 1.5), "Set 4")
+p4 <- plot_probs(out, "Set 4", ext = c(10, 3))
+
+out <- comp_out(dat5, res5)
+o5 <- plot_obs(out, c(-.5, .5), "Set 5")
+o5 <- arrangeGrob(o5, top = textGrob("\nObserved", 
+                                     rot = 0, vjust = 0)) 
+t5 <- plot_theta(out, c(-.5, .5), "Set 5")
+t5 <- arrangeGrob(t5, top = textGrob("\nModel Estimates", 
+                                     rot = 0, vjust = 0))
+p5 <- plot_probs(out, "Set 5", ext = c(10, 2.5))
+
+out <- comp_out(dat6, res6)
+o6 <- plot_obs(out, c(-.5, 1), "Set 6") 
+t6 <- plot_theta(out, c(-.5, 1), "Set 6")
+p6 <- plot_probs(out, "Set 6", ext = c(2, 1))
+
+out <- comp_out(dat7, res7)
+o7 <- plot_obs(out, c(-1, 1), "Set 7") 
+t7 <- plot_theta(out, c(-1, 1), "Set 7")
+p7 <- plot_probs(out, "Set 7", ext = c(5, 1.5))
+
+out <- comp_out(dat8, res8)
+o8 <- plot_obs(out, c(-1.25, 2), "Set 8") 
+t8 <- plot_theta(out, c(-1.25, 2), "Set 8")
+p8 <- plot_probs(out, "Set 8", ext = c(20, 12))
+
+```
+
+```{r sensitivity_analysis, cache=TRUE}
+gMap <- 0:3
+r1 <- c(2, 2, .25, .25)
+r2 <- c(2, 2, .25, .5)
+r3 <- c(2, 2, .25, 1)
+r4 <- c(2, 2, .5, .25)
+r5 <- c(2, 2, .5, 1)
+r6 <- c(2, 2, 1, .25)
+r7 <- c(2, 2, 1, .5)
+r8 <- c(2, 2, 1, 1)
+
+# Set 1 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat1, gMap, r1, progress = T)
+res2 <- all_bfs(dat1, gMap, r2, progress = T)
+res3 <- all_bfs(dat1, gMap, r3, progress = T)
+res4 <- all_bfs(dat1, gMap, r4, progress = T)
+res5 <- all_bfs(dat1, gMap, r5, progress = T)
+res6 <- all_bfs(dat1, gMap, r6, progress = T)
+res7 <- all_bfs(dat1, gMap, r7, progress = T)
+res8 <- all_bfs(dat1, gMap, r8, progress = T)
+
+set1_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 2 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat2, gMap, r1, progress = T)
+res2 <- all_bfs(dat2, gMap, r2, progress = T)
+res3 <- all_bfs(dat2, gMap, r3, progress = T)
+res4 <- all_bfs(dat2, gMap, r4, progress = T)
+res5 <- all_bfs(dat2, gMap, r5, progress = T)
+res6 <- all_bfs(dat2, gMap, r6, progress = T)
+res7 <- all_bfs(dat2, gMap, r7, progress = T)
+res8 <- all_bfs(dat2, gMap, r8, progress = T)
+
+set2_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 3 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat3, gMap, r1, progress = T)
+res2 <- all_bfs(dat3, gMap, r2, progress = T)
+res3 <- all_bfs(dat3, gMap, r3, progress = T)
+res4 <- all_bfs(dat3, gMap, r4, progress = T)
+res5 <- all_bfs(dat3, gMap, r5, progress = T)
+res6 <- all_bfs(dat3, gMap, r6, progress = T)
+res7 <- all_bfs(dat3, gMap, r7, progress = T)
+res8 <- all_bfs(dat3, gMap, r8, progress = T)
+
+set3_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 4 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat4, gMap, r1, progress = T)
+res2 <- all_bfs(dat4, gMap, r2, progress = T)
+res3 <- all_bfs(dat4, gMap, r3, progress = T)
+res4 <- all_bfs(dat4, gMap, r4, progress = T)
+res5 <- all_bfs(dat4, gMap, r5, progress = T)
+res6 <- all_bfs(dat4, gMap, r6, progress = T)
+res7 <- all_bfs(dat4, gMap, r7, progress = T)
+res8 <- all_bfs(dat4, gMap, r8, progress = T)
+
+set4_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 5 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat5, gMap, r1, progress = T)
+res2 <- all_bfs(dat5, gMap, r2, progress = T)
+res3 <- all_bfs(dat5, gMap, r3, progress = T)
+res4 <- all_bfs(dat5, gMap, r4, progress = T)
+res5 <- all_bfs(dat5, gMap, r5, progress = T)
+res6 <- all_bfs(dat5, gMap, r6, progress = T)
+res7 <- all_bfs(dat5, gMap, r7, progress = T)
+res8 <- all_bfs(dat5, gMap, r8, progress = T)
+
+set5_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 6 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat6, gMap, r1, progress = T)
+res2 <- all_bfs(dat6, gMap, r2, progress = T)
+res3 <- all_bfs(dat6, gMap, r3, progress = T)
+res4 <- all_bfs(dat6, gMap, r4, progress = T)
+res5 <- all_bfs(dat6, gMap, r5, progress = T)
+res6 <- all_bfs(dat6, gMap, r6, progress = T)
+res7 <- all_bfs(dat6, gMap, r7, progress = T)
+res8 <- all_bfs(dat6, gMap, r8, progress = T)
+
+set6_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 7 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat7, gMap, r1, progress = T)
+res2 <- all_bfs(dat7, gMap, r2, progress = T)
+res3 <- all_bfs(dat7, gMap, r3, progress = T)
+res4 <- all_bfs(dat7, gMap, r4, progress = T)
+res5 <- all_bfs(dat7, gMap, r5, progress = T)
+res6 <- all_bfs(dat7, gMap, r6, progress = T)
+res7 <- all_bfs(dat7, gMap, r7, progress = T)
+res8 <- all_bfs(dat7, gMap, r8, progress = T)
+
+set7_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+
+# Set 8 -------------------------------------------------------------------
+
+res1 <- all_bfs(dat8, gMap, r1, progress = T)
+res2 <- all_bfs(dat8, gMap, r2, progress = T)
+res3 <- all_bfs(dat8, gMap, r3, progress = T)
+res4 <- all_bfs(dat8, gMap, r4, progress = T)
+res5 <- all_bfs(dat8, gMap, r5, progress = T)
+res6 <- all_bfs(dat8, gMap, r6, progress = T)
+res7 <- all_bfs(dat8, gMap, r7, progress = T)
+res8 <- all_bfs(dat8, gMap, r8, progress = T)
+
+set8_results <- list(res1, res2, res3, res4, 
+                     res5, res6, res7, res8)
+
+sensitivity <- list(set1_results, set2_results, set3_results, set4_results,
+                    set5_results, set6_results, set7_results, set8_results)
+rm(set1_results, set2_results, set3_results, set4_results,
+   set5_results, set6_results, set7_results, set8_results)
+```
+
+In the usual course of experimental psychology, we often understand phenomena by computing the mean effect.  This mean effect may be used to compute effect sizes or statistical tests, and the resulting inferences are about the mean level in the population.  In our view, this focus on the mean makes sense when all people experience a phenomenon in a qualitatively similar way.  For example, suppose we ask people to identify a briefly-presented and subsequently masked letter.  In this case, increasing the stimulus duration of the letter should affect every individual in the same direction, namely that longer durations correspond to better performance.  It seems implausible in fact for any person's true performance to decreases with increasing stimulus duration.  And it is in this sense, where we can be almost sure that a phenomenon affects people in a qualitatively similar manner, that recourse to the mean seems judicious.
+
+What happens if a treatment affects different people differently?  A good example might be the effect of aspirin.  For most people, the drug aspirin safely relieves pain.  Yet, a minority of the population are allergic to aspirin, and for these people, the allergic reaction may be serious.  In this case, questions about the mean response seem unimportant.  Instead, the important questions are what proportion of the population is allergic and what are the seperate mechanisms of pain relief and allergic reactions.
+
+The question of whether the overall mean is useful hinges on whether an effect is qualitatively consistent across individuals.  In the first example, it seems implausible that increasing the stimulus duration of a briefly flashed and subsequently masked object could decrease identification for anyone.  For this example, the average performance gain as a function of stimulus duration seems a reasonable target for inquiry.  For the aspirin example, however, average gain in pain relief seems far less helpful.
+
+The key methodological question is how to tell if an effect is qualitatively consistent across a set of participants.  Progress on this question has been made by Haaf and Rouder and colleagues [@thiele2017; @haaf2017; @haaf2019].  We will review their approach subsequently, but for now, their research has yielded a startling finding.  When it comes to performance tasks, it seems that people don't qualitatively differ.  For example, nobody truly responds quicker to incongruent items in Stroop, Simon, or flanker tasks.  Indeed, we are previously unaware of any case where substantial qualitative differences appear in a performance task.  And this paper is the first we are aware of that shows such differences.
+
+In this paper, we explore individual differences in a truth-judgment task. More precisely, the target of inquiry is a popular psychological effect, the repetition-based *truth effect*.  In a typical truth-effect task, participants rate how likely it is that a particular statement is true.  The critical manipulation is repeating some statements, and these repeated statements are more likely rated as true than novel ones.  The real world impact of the truth effect is obvious: If a lie is repeated, it is more likely to be believed.  
+
+The question we ask is whether all people are susceptible to what we call a *positive* truth effect where repeated statements are judged as more valid than novel ones.  The alternative is that some people have a true *negative* truth effect where they tend to discount the validity of repeated statements.  Here, we analyze data from eight previous experiments spanning 1,105 participants and 38,904 trials.  We show to our surprise that in all the data sets where variation is detectable, there are some people who have a reliably negative truth effect.  Most people show a positive truth effect, but a small minority truly discount the validity of repeated information.
+
+
+# The Truth Effect
+
+Repeatedly encountering a piece of information is likely to increase the subjective belief in its validity. This phenomenon has been known -- and used -- for thousands of years. Around 150 BC, the Roman politician Cato reportedly concluded each of his speeches with the same sentence: "Carthago delenda est" (\textit{Carthage must be destroyed}). It seems that he succeeded in convincing the Roman Senate to approve of his proposition: In 146 BC, Carthage was destroyed. Cato's strategy might have resonated well with French military leader Napoleon Bonaparte, who conquered large parts of Europe in the early 19th century. According to Bonaparte, "there is only one figure in rhetoric of serious importance, namely, repetition" [@lebon1895, p. 125]. Roughly 100 years later, Nazi German Minister of Propaganda Joseph Goebbels made use of this rhetorical device; "Repeat a lie often enough and it becomes the truth", is typically attributed to Goebbels [@stafford2016]. 
+
+The effect of repetition on the perception of a proposition's truth is a well-documented phenomenon in experimental psychology. In a seminal study, @hasher1977 asked participants to provide truth ratings for trivia statements in successive sessions. Critically, some of the statements were repeated across sessions while others were novel. The authors found validity ratings for repeated statements to increase, independent of the statements' actual validity, while ratings for novel statements did not change.
+
+Over the past 40 years, the truth effect has been replicated numerous times [@dechene2010; @unkelbach2019]. It has been shown to be robust across different experimental designs, material, and instructions. Even explicit warnings about the effect do not eliminate it, but only reduce it [@nadarevic2017]. The consequences of such a robust cognitive bias are evident: If used strategically, repeated dissemination increases belief even in false information [@unkelbach2019; @lazer2018; @pennycook2018]. 
+
+Meta-analytic results indicate that the truth effect is stable across studies, and is medium in size [Cohen's $d \approx 0.50$; @dechene2010].  Consequently, the truth effect has been well-established for the average of individuals. In contrast, we are aware of only a small number of published studies on individual differences [@arkes1991; @boehm1994; @brashier2017; @dekeersmaecker2020; @newman2020; @parks2006].  All of these studies assessed the covariation of individual truth effects and certain person-specific variables (e.g., age, need for cognition, and cognitive style). Yet, correlational analyses do not address the main question here, namely:  Are individual differences only quantitative, or qualitative? 
+
+\textit{Quantitative} differences occur if all participants provide somewhat higher truth ratings for repeated than for novel statements. We might reasonably assume a common process underlying the effects in this case, and the mean might even be an adequate representation for understanding this process.  The assumption is less reasonable, however, if differences are *qualitative*, that is, if some participants were to depreciate the validity of repeated statements. Indeed, qualitative individual differences are precedented in the domain of truth judgments [i.e., belief polarization; @cook2016].  Is it still the same process that leads some people to increase their belief in repeated statements and others to decrease it?  If qualitative differences can be shown, this has theoretical implications. A theory of the truth effect would have to account for both the increase and the decrease in beliefs due to repetition. Therefore, to gain constraint on theory, a fundamental question in the analysis of the repetition-based truth effect is what @haaf2017 coined the "Does everybody?" question: Does everybody show a positive truth effect? 
+
+This fundamental question comes with a methodological challenge: Even if we observe a negative truth effect for some individuals, this observation might reflect sampling noise rather than true qualitative differences. How do we assess whether people truly differ and, if so, whether these differences are qualitative? To answer these questions, we follow the strategy proposed by Haaf and Rouder [-@haaf2017; -@haaf2019]. We develop a set of hierarchical Bayesian models that represent different structures of individual differences. By means of model comparison, we then directly assess the evidence from data about the nature of individual differences.
+
+In the following, we provide a brief description of the eight data sets that we reanalyze in this study. We then develop the statistical models of individual-differences structures and outline the procedure to quantify evidence for these models. With model comparison, we find a surprising result: Across many of the data sets, there is a small proportion of individuals that show a negative truth effect.
+
+
+# Data Sets
+
+We reanalyzed eight data sets from previous truth-effect experiments, all of which are publicly available from the Open Science Framework (OSF).\footnote{Set 1: \url{https://osf.io/6wv4z/}; Set 2: \url{https://osf.io/3uaj7/}; Sets 3 \& 4: \url{https://osf.io/5pfa2/}; Sets 5 \& 6: \url{https://osf.io/eut35/}; Set 7: \url{https://osf.io/b4szp/}; Set 8: \url{https://osf.io/txf46/}} Six of the sets have been published in peer-reviewed articles; two have been published only on OSF. Detailed information about the data and the experiments can be obtained from Appendix \ref{sec:data}. 
+
+All data sets are based on a common experimental design with three phases. Phase 1 is the \textit{exposure phase}: Participants see a number of trivia statements and, typically, assign each statement to a semantic domain (e.g., biology, geography, sports) or rate each for interest. Phase 2 is a retention interval, in wich participants may perform an unrelated task. This phase can range from a few minutes to several days. Phase 3 is the critical \textit{judgment phase} where participants rate the validity of statements. Ratings are typically given on a Likert scale, for example, from 1 ("definitely false") to 6 ("definitely true"). Critically, half of the statements have been presented during the exposure phase and half are new. The truth effect is measured as the difference between mean truth ratings for repeated and for new statements, $M_{rep} - M_{new}$. 
+
+For an overview of sample characteristics and results of the eight data sets, see Table \ref{tab:descriptives}. For the sake of comparison, we rescaled truth ratings to range from $-1$ ("definitely false") to $1$ ("definitely true"). As a consequence, the truth effect can range from $-2$ to $2$. If all repeated statements received truth ratings of $1$ while all new were rated as $-1$, the resulting truth effect would be $2$. An effect of $-2$, in contrast, would indicate a perfect reversal of the truth effect. Zero represents the absence of any effect.
+
+Figures \ref{fig:est1} and \ref{fig:est2} (left columns) show the individual truth effects in all eight data sets (black line). Individuals are sorted by the size of their effect, going from the most negative to the most positive. The red line indicates if the individual effect is below 0, that is, negative observed truth effects. The grey-shaded area surrounding the line denotes 95% confidence intervals. The average effect across all people is given by the dashed horizontal line. In all data sets, we observe considerable differences between individual participants.  
+
+
+```{r descriptives, results="asis"}
+tab <- cbind(1:8,
+             c("Nadarevic et al. (2012)",
+               "Nadarevic and Rinnewitz (2011)",
+               "Nadarevic and A{\\ss}falg (2017), Exp. 1",
+               "Nadarevic and A{\\ss}falg (2017), Exp. 2",
+               "Nadarevic and Erdfelder (2014), Exp. 1",
+               "Nadarevic and Erdfelder (2014), Exp. 2",
+               "Brashier et al. (2020), Exp. 1",
+               "Pennycook et al. (2018), Exp. 1"),
+             descriptives$I, descriptives$J, 
+             paste0(sprintf(descriptives$obs, fmt = "%#.2f"),
+                    " (", sprintf(descriptives$sd, fmt = "%#.2f"), ")"),
+             paste0("$t$(", descriptives$df, ") = ", 
+                    sprintf(descriptives$t, fmt = "%#.2f")),
+             sprintf(descriptives$d, fmt = "%#.2f")) 
+
+apa_table(
+  data.frame(tab)
+  , format = "latex"
+  , booktabs = T
+  , escape = F
+  , align = "c"
+  ,col.names = c("Set", "Source", "$N$", 
+                 "$I$","Mean Effect*", 
+                 "$t$ Test", "Cohen's $d$")
+  , caption = "Summary of the Data Sets."
+  , note = "$N$ = Number of participants; $I$ = Number of statements rated per participant; $t$ values and degrees of freedom are based on paired $t$ tests. *Standard deviation is given in parentheses."
+)
+```
+
+ 
+```{r est1, fig.cap="Observed (left column) and estimated (right column) individual truth effects for Data Sets 1--4, ordered by observed effect size. On the left side, the shaded area denotes individual 95\\% confidence intervals. The dashed line represents average observed effects. On the right side, the shaded area denotes the 95\\% credible interval. The grey line represents observed truth effects. Negative observed and estimated effects (i.e., higher truth ratings for novel than for repeated statements) are denoted by red color on both sides.", out.width = "1.5\\textwidth",fig.asp=1.2}
+cowplot::plot_grid(o1, NULL, t1,
+                   o2, NULL, t2,
+                   o3, NULL, t3,
+                   o4, NULL, t4,
+                   align = "hv",
+                   nrow = 4, rel_widths = c(1, .05, 1),
+                   rel_heights = c(1.25, 1, 1, 1))
+
+```
+
+```{r est2, fig.cap="Observed (left column) and estimated (right column) individual truth effects for Data Sets 5--8, ordered by observed effect size. On the left side, the shaded area denotes individual 95\\% confidence intervals. The dashed line represents average observed effects. On the right side, the shaded area denotes the 95\\% credible interval. The grey line represents observed truth effects. Negative observed and estimated effects (i.e., higher truth ratings for novel than for repeated statements) are denoted by red color on both sides.", out.width = "1.5\\textwidth",fig.asp=1.2}
+cowplot::plot_grid(o5, NULL, t5, 
+                   o6, NULL, t6, 
+                   o7, NULL, t7, 
+                   o8, NULL, t8,
+                   align = "hv",
+                   nrow = 4, rel_widths = c(1, .05, 1),
+                   rel_heights = c(1.25, 1, 1, 1))
+```
+
+# Statistical Models
+
+The main substantive question is whether individual differences are quantitative or qualitative.  Our strategy in answering this question is to implement each of these positions in statistical models, and then compare the models in light of data with Bayes factors.  The specific models come from @haaf2017, and, consequently, we provide only a brief overview here.  Let $Y_{ijk}$ denote the truth judgment of the $i$th person ($i = 1, \ldots ,I$) for the $j$th statemt ($j = 1,\ldots, J$) in condition $k$ ($k = 1,2$ for new versus repeated, respectively). Note that not every statement $j$ is necessarily seen by each participant $i$. Consequently, the data sets do not contain $Y_{ijk}$ for every possible combination of $i$, $j$, and $k$. This fact presents no problem in analysis.
+
+We specify the following linear model on the dependent variable:
+\begin{equation}
+  Y_{ijk} \overset{\text{ind}}{\sim} \text{Normal} (\mu + \alpha_i + t_j \beta + x_k \theta_i,\ \sigma^2).
+\end{equation}
+In this model, $\mu$ denotes the grand mean intercept and $\alpha_i$ is a person-specific deviation from this grand mean. The term $t_j$ codes the truth status of the $j$th statement, which can either be $0$ if it is false, or $1$ if it is true. Hence, $\beta$ denotes the effect of a statement's factual truth on the judgment. The term $x_k$ codes the repetition condition, which can either be $0$ if the statement is new or $1$ if it is repeated. Consequently, $\theta_i$ denotes the $i$th individual's truth effect, and this parameter is the main target of inquiry. The last term, $\sigma^2$, denotes the sampling variance of observed values. The main theoretical positions about individual differences motivate the following four models on $\theta_i$:
+
+## The Unconstrained Model
+
+The unconstrained model, $\calM_u$, does not impose any constraints on the individual effects.  It may be used to capture qualitative individual differences:
+\begin{equation}
+ \calM_u\text{: }\theta_i \overset{\text{iid}}{\sim} \text{Normal}(\nu,\ \delta^2).
+\end{equation}
+In this model, $\nu$ and $\delta^2$ denote the mean and variance of individual effects. These group-level parameters are estimated from the data.
+
+## The Positive-Effects Model
+
+The positive-effects model, $\calM_{+}$, is less flexible. It only allows for positive individual effects:
+\begin{equation}
+ \calM_{+}\text{: }\theta_i \overset{\text{iid}}{\sim} \text{Normal}_{+}(\nu,\ \delta^2).
+\end{equation}
+The distribution denoted by $\text{Normal}_{+}$ is a truncated normal with a lower bound at zero. Thus, the model naturally incorporates the constraint that individuals may differ but they are all in the same predicted direction. Substantively, this model implies that differences are quantitative, but not qualitative.
+
+## Common-Effect Model
+
+The critical specification in the common-effect model, $\calM_1$, is that all individuals share one common effect:
+\begin{equation}
+ \calM_{1}\text{: }\theta_i = \nu.
+\end{equation}
+Accordingly, there are no true individual differences in the truth effect. Any observed variation would thus be due to sampling noise.
+
+## Null Model
+
+The final model is a null model, $\calM_0$, where there is no truth effect at all:
+\begin{equation}
+ \calM_{0}\text{: }\theta_i = 0.
+\end{equation}
+Accordingly, any observed effects of statement repetition are due to sampling noise.
+
+Figure \ref{fig:modPred} (left column) illustrates the four models. On the x-axis, the true effect of a hypothetical participant is shown, $\theta_1$. On the y-axis, the true effect of a second participant is shown, $\theta_2$. The null model specifies that both effects are 0, thus, the model is represented by a point at the origin. The common-effect model does not restrict true effects to one value, but specifies that all individual effects are identical. This is represented by the diagonal line. No equality constraints are imposed in the positive-effects model, but all true individual effects are defined as larger than zero. Accordingly, $\theta_1$ and $\theta_2$ are free to vary in the upper-right quadrant. Finally, the unconstrained model puts no restrictions on individual effects; the model for the two hypothetical participants is represented by a bivariate normal centered at the origin.  
+
+```{r modPred, fig.cap="Illustration of the four models (left column) on $\\theta_i$ and corresponding predictions (right column) for two hypothetical participants.", fig.width=4.5, fig.asp=1.7, cache=TRUE}
+sd0 <- .5
+eta = .5
+
+gamma <- seq(-2, 2, .025)
+
+kern <- convKernel(sigma = 5, k = "gaussian")
+
+nrmlz <- function(mat)
+{
+  tot <- sum(mat)
+  mat/tot
+}
+
+
+#Conditional model specification
+norm0 <- function(theta1, theta2, Sigma) dnorm(theta1, 0,Sigma) * dnorm(theta2, 0, Sigma)
+norm <- function(theta1, theta2, Sigma) dmvnorm(cbind(theta1, theta2), c(0,0), Sigma)
+normT1 <- function(theta1, theta2, Sigma, l, u) dtmvnorm(cbind(theta1, theta2)
+                                                   , c(0,0)
+                                                   , Sigma
+                                                   , lower = rep(l, 2)
+                                                   , upper = rep(u, 2))
+normT <- function(theta1, theta2, Sigma, l , u){
+  dtnorm(theta1, 0, Sigma, lower = l, upper = u) * dtnorm(theta2, 0, Sigma, lower = l, upper = u)
+}
+
+Null <- outer(gamma, gamma, norm0, Sigma = .002)
+Null <- nrmlz(Null)
+One <- outer(gamma
+                   , gamma
+                   , normT1
+                   , Sigma = matrix(c(sd0^2, sd0^2.001, sd0^2.001, sd0^2)
+                                    , nrow = 2)
+                   , l = -Inf
+                   , u = Inf) 
+One <- nrmlz(One)
+Pos <- outer(gamma
+                   , gamma
+                   , normT
+                   , sd0
+                   , l = 0
+                   , u = Inf)
+Pos <- nrmlz(Pos)
+General <- outer(gamma
+                 , gamma
+                 , norm
+                 , Sigma = matrix(c(sd0^2, 0, 0, sd0^2)
+                                  , nrow = 2))
+General <- nrmlz(General)
+
+priorPos1 <- outer(gamma
+                   , gamma
+                   , normT1
+                   , Sigma = matrix(ncol = 2, c(sd0^2, 0, 0, .005^2))
+                   , l = 0
+                   , u = Inf)
+priorPos1 <- nrmlz(priorPos1)
+
+priorPos2 <- outer(gamma
+                   , gamma
+                   , normT1
+                   , Sigma = matrix(ncol = 2, c(.005^2, 0, 0, sd0^2))
+                   , l = 0
+                   , u = Inf)
+priorPos2 <- nrmlz(priorPos2)
+
+priorSpike <- outer(gamma
+                   , gamma
+                   , normT1
+                   , Sigma = matrix(ncol = 2, c(.005^2, 0, 0, .005^2))
+                   , l = 0
+                   , u = Inf)
+priorSpike <- nrmlz(priorSpike)
+
+#Marginal model specification
+GeneralH <- outer(gamma
+                  , gamma
+                  , norm
+                  , Sigma = matrix(c(sd0^2, eta*sd0^2, eta*sd0^2, sd0^2)
+                                     , nrow = 2))
+GeneralH <- nrmlz(GeneralH)
+
+PosH <- 4 * GeneralH
+index <- gamma < 0
+PosH[index, ] <- 0
+PosH[, index] <- 0
+PosH <- nrmlz(PosH)
+
+#Model Predictions
+NullP <- nrmlz(applyFilter(Null, kern))
+OneP <- nrmlz(applyFilter(One, kern))
+PosP <- nrmlz(applyFilter(PosH, kern))
+GeneralP <- nrmlz(applyFilter(GeneralH, kern))
+
+#####Figure
+top1 <- max(One, PosH)
+top2 <- max(Pos)
+top3 <- max(NullP)
+
+true1 <- expression(paste("True ", theta[1]))
+true2 <- expression(paste("True ", theta[2]))
+est1 <- expression(paste("Estimated ", theta[1]))
+est2 <- expression(paste("Estimated ", theta[2]))
+
+a <- figMod(Null, top1, true1, true2, 
+            title = "Model", rowtitle = "\nNull", alpha = 1)
+b <- figMod(NullP, top3, est1, est2, 
+            title = "Prediction")
+c <- figMod(One, top1, true1, true2, 
+            title = NULL, rowtitle = "\nCommon")
+d <- figMod(OneP, top2, est1, est2, 
+            title = NULL)
+e <- figMod(Pos, top2, true1, true2, 
+            title = NULL, rowtitle = "\nPositive")
+f <- figMod(PosP, top2, est1, est2, 
+            title = NULL)
+g <- figMod(General, top2, true1, true2, 
+            title = NULL, rowtitle = "\nUnconstrained")
+h <- figMod(GeneralP, top2, est1, est2, 
+            title = NULL)
+plot_grid(a, b, c, d, e, f, g, h,
+          ncol = 2, rel_heights = c(1.1, .95, .95, .95),
+          rel_widths = c(1.1, 1))
+```
+
+
+
+## Prior Specification
+
+We implement these models in the Bayesian framework, and, as such, priors are needed on parameters.  For some parameters, those that are common in all four models, the priors may be set without undue influence on the posteriors or model comparison statistics.  These specifications are provided in Appendix \ref{sec:priors}.  For other parameters, however, those that vary across models ($\theta$, $\nu$, $\delta^2$), prior settings are important and are discussed here.
+
+We follow the common $g$-prior specification approach [@zellner1986], which is based on placing priors on effect sizes.  The setup is described in detail in @haaf2017 and @rouder2012.   Let $g_\theta$ be a signal-to-noise ratio defined as $g_\theta = \delta^2/\sigma^2$.  This is an effect-size description of $\theta$; it describes how much true variability there is across people relative to the variability in observations.  With this parameter, we may write $\theta_i \sim \mbox{Normal}(\nu,g_\theta\sigma^2)$.  Priors are needed on $\nu$ and $g_\theta$.  The prior on $\nu$ is also scaled to the variability in observations: $\nu \sim \mbox{Normal}(0,g_\nu\sigma^2)$, and there is a new parameter $g_\nu$.  Priors on these $g$ parameters are Inverse-$\chi^2$ distributions with one degree of freedom and a scale parameter $r^2$:
+\begin{equation}
+\begin{split}
+g_\nu & \sim \text{Inverse-}\chi^2(r_\nu^2),\\
+g_\theta & \sim \text{Inverse-}\chi^2(r_\theta^2).
+\end{split}
+\end{equation}
+
+Researchers need to set the scales of these priors before the analysis. We advocate that doing so should rely on substantive considerations rather than statistical arguments. Here is our line of thought: In our experience, on a standardized scale of $-1$ to $1$, truth judgments' trial-by-trial variability covers about a quarter of the scale, that is, $\sigma = 0.50$. As a reference, on a scale from 1 to 6, this corresponds to a standard deviation of $\sigma = 1.50$. When specifying $r$, it is helpful to consider that it represents an expectation about the variability of the parameter relative to $\sigma$. For example, a value of $r_\theta = 1$ encodes the belief that the variability of person-specific truth effects (i.e., $\delta$) is comparable to the trial-by-trial variability. Likewise, $r_\theta = 1/2$ or $r_\theta = 2$ represent the expectation that $\delta$ scales about half or about twice as large as $\sigma$, respectively. Figure \ref{fig:priors} illustrates the effect of different choices of $r_\theta$. It shows the resulting prior distributions on the variability of $\theta_i$ conditional on a trial-by-trial variability of $\sigma = 0.50$.
+
+```{r priors, fig.cap="Prior distributions on $\\delta$, the variability of $\\theta_i$, for different scale settings. A trial-by-trial variation of $\\sigma = 0.50$ is assumed.", fig.width=5}
+fun <- function(x, r){
+  2*x*dinvgamma(x^2, 1/2, r^2/2)
+}
+
+
+ggplot(data.frame(x = 0), aes(x)) +
+  stat_function(fun = fun, args = list(r = .25), 
+                xlim = c(0.0001, 2), aes(linetype = "a"), lwd = 1) +
+  stat_function(fun = fun, args = list(r = .5), 
+                xlim = c(0.0001, 2), aes(linetype = "b"), lwd = 1) +
+  stat_function(fun = fun, args = list(r = 1), 
+                xlim = c(0.0001, 2), aes(linetype = "c"), lwd = 1) +
+  scale_x_continuous(breaks = c(0,.5, 1, 1.5, 2), 
+                     labels = c(0,.5, 1, 1.5, 2)*.5) +
+  theme_classic() + 
+  theme(panel.border=element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.ticks.length = unit(.2, "cm"),
+        axis.text.x = element_text(color = "black",
+                                   vjust = -2),
+        axis.title.x = element_text(vjust = -2),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        legend.position = "bottom",
+        legend.key.width = unit(1, "cm"),
+        text = element_text(size = 12)) +
+  coord_capped_cart(bottom='both', left = "both") +
+  labs(x = expression(delta), y = element_blank()) +
+  scale_linetype_manual(expression(paste(italic(r)[theta]^2)),
+                        breaks = c("a", "b", "c"),
+                        values = c("dotted", "solid", "dashed"),
+                        labels = c("1/16",
+                                   "1/4",
+                                   "1"))
+```
+
+Based on this information, how do we choose the scale parameters? The average truth effect is of medium size, Cohen's $d = 0.50$ [@dechene2010]. Assuming $\sigma = 0.50$, the expected observed effect on a rating scale of $-1$ to $1$ is thus $0.25$. We find it reasonable to expect that the variability of this effect is of a comparable magnitude. Therefore, we define the scales of our $g$ priors on $\theta_i$ and $\nu$ such that they place most weight on values around half the trial-by-trial variability, that is, $r_\nu^2 = r_\theta^2 = (1/2)^2$. 
+
+
+## Model Comparison
+
+The models may be used to answer the main substantive question about qualitative individual differences. One approach is simply to estimate individual effects ($\theta_i$) in the full model. Yet, we think this approach is ultimately unhelpful. The problem is that whether there are qualitative differences between individuals is a global property rather than an individual one.  One may know that someone must be negative without the ability to identify who. Consequently, individual estimates are not helpful in themselves. And population-level mean effects are not helpful either as they do not address the distinction between qualitative and quantitative individual differences.  Hence, the key to assessment here may be made with model comparison and not with estimation.
+
+A leading approach to model comparison in Bayesian analysis is the \textit{Bayes factor} [@jeffreys1935; @jeffreys1961]. Bayes factors measure the relativ strength of evidence for models by comparing how well these models predict the data [@rouder2017; @kass1995]. Figure \ref{fig:modPred} (right column) illustrates the predictions that the different models make for observed data of the two hypothetical participants. These predictions are noisy versions of the structure on true values. The more flexible a model is, that is, the fewer restrictions it imposes on the structure of individual differences, the more diffuse are its predictions. Hence, models are penalized for flexibility. 
+
+Analysis for the null model, the common-effect model, and the unconstrained model have been developed by @rouder2012. Their approach is implemented in the \textit{BayesFactor} package [@morey2015] in R [@rcoreteam2019], which allows for fast and accurate calculation of Bayes factors for three of the four models. This development, however, does not apply to the positive-effects model. Therefore, we calculated the Bayes factors between the positive-effects and the unconstrained model using the \textit{encompassing prior} method proposed by Klugkist and colleagues [@klugkist2007; @klugkist2005]. The combination of these two approaches is straightforward \parencite[e.g.,][]{haaf2017, haaf2019}.
+
+
+# Evidence for Qualitative Differences
+
+## Model Convergence
+
+Posterior distributions for all parameters in the unconstrained model are obtained by Markov chain Monte Carlo (MCMC) sampling within the BayesFactor package. We checked model convergence by inspecting MCMC chains and computing autocorrelations for critical parameters (i.e., $\nu$, $\theta$, $g_\nu$, and $g_\theta$). As in previous applications, the models converged fast and the chains mixed well. The autocorrelations for even the slowest converging parameters were inconsequential compared to the large number of posterior samples (10,000).
+
+## Estimation
+
+Individual truth effect estimates from the unconstrained model for all eight data sets are shown in the right columns of Figures \ref{fig:est1} and \ref{fig:est2}. The black line denotes the posterior means of $\theta_i$ for each participant. The grey band around this line is the 95% credible interval, that is, an interval that contains 95% of the posterior samples. The grey line represents observed individual truth effects and the ordering is obtained from these observed values (see left columns).
+
+The first aspect to note is the effect of the hierarchical model specification on individual estimates. The effect is called shrinkage: Individual estimates inform each other and thus, outliers are pulled (\textit{shrunk}) toward the mean. This shrinkage is clearly visible in the estimates; there is less variability than in the observed effects. Note that the credible intervals are much smoother than the individual confidence intervals of observed effects (left column), reflecting regularization from the homogenous variance specification. The second aspect to note is that even with the shrunk estimates, considerable true individual differences remain. And the third aspect, perhaps the most consequential, is that some of these shrunk estimates are negative. 
+
+## Model Comparison
+
+Table \ref{tab:bfs} summarizes the results of the Bayes factor model comparison for the eight data sets. In each column, an asterisk marks the *preferred* model, the one for which the data provided the most evidence. The other cells in each column show the Bayes factors between the remaining models and this preferred model.  Because these remaining models are less preferred, the Bayes factors are always less than one, mostly by many orders of magnitude. 
+
+In five data sets, we find strong evidence for qualitative differences: In Sets 1, 2, 4, 6, and 8, the Bayes factors in favor of the unconstrained model $\calM_u$ are at least 1000-to-1 over the next leading competitor. As $\calM_u$ is the only model that allows for qualitative individual differences, the Bayes factors provide compelling evidence for them. In these data sets, there must be some individuals with a true negative truth effect. 
+
+In the remaining three data sets, in contrast, we do not find evidence for this negativity. Interestingly, the preferred model in Sets 3, 5, and 7 is not $\calM_+$, which allows for quantitative individual differences. Instead, it is $\calM_1$, which specifies a common effect without individual differences. In Sets 3 and 5, there is strong evidence for the common-effect model; the Bayes factors in favor of $\calM_1$ are at least three orders of magnitude over the next competitor. In Set 7, in contrast, the evidence is fairly ambiguous, indicating that the data do not contain sufficient resolution to adjudicate among the different models. In summary, whenever we find individual differences, they are qualitative in nature rather than quantitative.
+
+We find strong evidence for these differences in five data sets. In at least two, however, we find evidence against them. How do these two data sets, Sets 3 and 5, differ from the others? Looking for a psychological explanation, we note that in both sets the judgment phase was administered after a one-week retention interval, whereas it took place within one experimental session in all other sets.  If this difference was systematic, the influence of retention-interval length could tell us something about the nature of individual differences.  It is possible that differences in cognitive performance [e.g., source recollection; @begg1992] rather than personality underly qualitative differences in truth effects, and that these cognitive differences are affected for example by the length of the retention interval. Alternatively, however, there could be simple statistical reasons for this result:  Data Set 3 is rather small, thus allowing for strong influence of shrinkage and making it difficult to evidence true individual differences should they exist. Therefore, we should be careful not to overinterpret the results. Any post-hoc explanation should be addressed and critically tested in future experiments. 
+
+
+```{r bfs, results="asis"}
+bf_overview <- cbind(res1$bf[,4], res2$bf[,4],
+                     res3$bf[,2], res4$bf[,4],
+                     res5$bf[,2], res6$bf[,4],
+                     res7$bf[,2], res8$bf[,4])
+bf_overview <- matrix(sprintf("%.1e",bf_overview), nrow = 4)
+bf_overview[4, c(1,2,4,6,8)] <- "*"
+bf_overview[2, c(3,5, 7)] <- "*"
+bf_overview <- cbind(c("$\\mathcal M_0$",
+                       "$\\mathcal M_1$",
+                       "$\\mathcal M_+$",
+                       "$\\mathcal M_u$"),
+                     bf_overview)
+
+bf_overview %>% 
+  kable("latex", booktabs = T, escape = F,
+        col.names = c("Model","1", "2", "3", "4", "5", "6", "7", "8"),
+        align = "c",
+        caption = "Bayes Factor Model Comparison") %>% 
+  kable_styling(latex_options = "scale_down") %>% 
+  add_header_above(c("", "Data Set" = 8)) %>% 
+  footnote(escape=F, general = "The preferred model for each data set is indicated by an asterisk. Remaining cells contain Bayes factors for each model against the preferred model. $\\calM_0$ = null model; $\\calM_1$ = common-effect model; $\\calM_+$ = positive-effects model; $\\calM_u$ = unconstrained model.",
+           general_title = "Note.",
+           title_format = "italic", 
+           footnote_as_chunk = T,
+           threeparttable = T)
+```
+
+# Classifying Individuals
+
+```{r}
+all <- c(res1$prob, 
+         res2$prob,
+         res3$prob,
+         res4$prob,
+         res5$prob,
+         res6$prob,
+         res7$prob,
+         res8$prob)
+pos <- c(res3$prob,
+         res5$prob,
+         res7$prob)
+full <- c(res1$prob, 
+          res2$prob,
+          res4$prob,
+          res6$prob,
+          res8$prob)
+
+cat_probs <- function(x){
+  c("pos" = mean(x >= .75), 
+    "neg" = mean(x <= .25),
+    "undecided" = mean(x > .25 & x < .75))
+}
+```
+
+
+Who are these individuals that depreciate the validity of repeated statements? Posterior means, such as those in Figures \ref{fig:est1} and \ref{fig:est2}, do not provide enough information for classification because classification should depend on the underlying variability. A better approach to classifying individuals with truly negative truth effects is to assess the posterior probability that an individual's estimate is less than 0. 
+
+Figure \ref{fig:probs} shows the posterior probability of a *positive* truth effect for each individual, that is, $P(\theta_i > 0|\text{Data})$. The red color denotes individuals with negative posterior means. As a means to classify people for the purposes of this article, we assign individuals with a probability of at least 3-to-1 to one of two groups: We define individuals with $P(\theta_i > 0|\text{Data}) \geq .75$ as *positive truthers*. In contrast, individuals with $P(\theta_i > 0|\text{Data}) \leq .25$ are *negative truthers*. We classify participants with $.25 \leq P(\theta_i > 0|\text{Data}) \leq .75$ as undecided. We acknowledge that this way to classify people is somewhat arbitrary. That notwithstanding, across all data sets, `r cat_probs(all)["pos"]*100`\% of all participants are classified as positive truthers; only `r cat_probs(all)["neg"]*100`\% are classified as negative truthers and `r cat_probs(all)["undecided"]*100`% are classified as undecided. 
+
+In Sets 3 and 5, we found strong evidence for the absence of individual differences. Yet, while no individuals classify as negative truthers in these data sets, we still find `r cat_probs(c(res[[3]]$prob, res[[5]]$prob))["undecided"]*100`\% to be undecided. This result shows that classification may find differences even when a more global approach---model comparison---indicates that these differences are unwarranted.  A somewhat complimentary state-of-affairs occurs for Data Set 6.  Here, model comparison showed strong evidence for qualitative individual differences. Yet, we cannot classify anyone with certainty as a negative truther.
+
+These discrepencies illustrate the difficulty with classification: When we apply a classification approach, we may classify individuals as different even when there are no true individual differences.  This state occurs because classification is local to the individual, and as such, it is more susceptible to noise than Bayes factor assessment of global patterns.  Conversely, we may know from the Bayes factor global assessment that a set may have at least one individual with a true negative effect.  Yet, based on individual posterior probabilities, it may be difficult to know which one that is.
+
+The aim of this paper is the global assessment of individual difference patterns in truth-effect experiments. If our overriding goal was to classify people, we could construct a latent-class classification model.  In such a model, the normal in the unconstrained model could be replaced with a mixture of two states.  One state would cover the positive truthers; and the distribution would be limited to positive true values.  The other would cover the negative truthers, and the distribution would be limited to negative true values.  If there is little mass toward zero, the model would have the effect of cleaving people clearly into two groups.  A good example here is @houpt2017, who used this latent-class approach to classify people as using either serial or parallel processing in a systems factorial setting.  The development of such a model is beyond the scope of this paper, but may prove useful in understanding the relationship between individual differences in the truth effect and other variables.
+
+```{r probs, fig.cap="Individual posterior probabilities of a positive truth effect. Participants are ordered by observed effect size. The red line denotes individuals with negative posterior means (see Figures \\ref{fig:est1} and \\ref{fig:est2}).", out.width = "1.5\\textwidth",fig.asp=1.2}
+cowplot::plot_grid(p1, NULL, p2, 
+                   p3, NULL, p4, 
+                   p5, NULL, p6, 
+                   p7, NULL, p8,
+                   align = "hv",
+                   nrow = 4, rel_widths = c(1, .05, 1))
+```
+
+# Sensitivity to Prior Settings
+
+```{r sensitivity, fig.cap="Sensitivity of Bayes factor model comparison to different prior settings. Shown are Bayes factors for each model against the preferred model. The asterisk denotes the prior setting used in the previous analysis. Details for each prior setting are shown in Table \\ref{tab:priorsettings}.", fig.width = 7, fig.asp=.45}
+a <- get_sensitivity(sensitivity, 1, 4)
+b <- get_sensitivity(sensitivity, 2, 2)
+
+pa <- plot_sensitivity(a, lab = c(0, -2, -4, -6, -8),
+                       lim = c(-8, 0)) + ggtitle("Set 6")
+pb <- plot_sensitivity(b, lab = c(0, -2, -4, -6, -8),
+                       lim = c(-8, .1)) + ggtitle("Set 7")
+
+ggpubr::ggarrange(pa, pb, # list of plots
+                  labels = "",# labels
+                  common.legend = T, # COMMON LEGEND
+                  legend = "bottom", # legend position
+                  align = "hv", # Align them both, horizontal and vertical
+                  ncol = 2) 
+```
+
+
+The Bayesian analysis presented herein requires the analyst to set a prior scale, denoted $r^2$, on the signal-to-noise ratio $g$.  The dependence of Bayesian analysis on prior settings is frequently criticized as posing a threat as it provides for uncounted researcher degrees of freedom [@Simmons:etal:2011].  Indeed, it seems reasonable to require that for the same data set, different researchers should reach the same conclusions.  Yet, almost all Bayesians note that priors have effects on inference.  To align Bayesian inference with the above desideratum, many Bayesian analysts actively seek to minimize the effects of prior settings [e.g., @aitkin1991; @Gelman:etal:2004; @kruschke2013; @spiegelhalter2002]. 
+
+We do not subscribe to the view that minimization of prior effects is necessary or even laudable.  In fact, all reasonable statistical procedures that we are aware of require the researcher to make decisions that will affect the inference (e.g., choosing the sample size).  The choice of prior settings is important because it affects the predictions that models make about data.  Therefore, these settings that affect the predictive accuracy of a model *should* affect our opinions about it in light of data.
+
+Thus, when different researchers use different priors, they may reach different opinions about the data.  @rouder2016a argue that so long as various prior settings are *justifiable,* the variation in results should be embraced as the legitimate diversity of opinion.  When reasonable prior settings result in conflicting conclusions, we may infer that the data do not afford the precision to adjudicate among competing positions. 
+
+With this argument in mind, we may assess whether reasonable variation in prior settings affects Bayes factor conclusions about the nature of individual differences in the truth effect for the current data.  To that end, we repeated the above analysis with a number of different prior settings.  The critical settings are $r_\nu$ and $r_\theta$, which code the scale of effects.  We set $r_\nu$ and $r_\theta$ to $0.50$ in value, meaning that we expect the variation in $\nu$ and $\theta$ to be about half the variation in repeated observations.  Here, we allow each of these settings to be this value, half this value, and twice this value; and the factoral combination yields nine possible settings.   We computed the Bayes factors for all models for all nine settings for all data sets to understand how reasonable variation in prior settings affects inference.
+
+For seven of eight data sets, model comparison was unaffected by reasonable variation in prior settings. As an illustration, the results for two data sets are depicted in Figure \ref{fig:sensitivity}. The figure shows the Bayes factors for all models relative to the preferred one in the previous analysis.  On the right is Data Set 7, the most concerning.  Here, the common-effect model is preferred only by a negligible amount depending on the prior setting, indicating a lack of a clear verdict between the models.  This lack of resolution holds only for this data set.  The left panel shows the case for Data Set 6, and we chose this set because, outside of Data Set 7, Bayes factors were most dependent on prior settings.  Even so, the unconstrained model is preferred over all other models by at least a factor of 100 across the range of reasonable prior settings.  In the remaining data sets (not shown), there is even more stability of Bayes factors across the ranges.   Hence, across reasonable variation in prior settings, Data Sets 1, 2, 4, 6, and 8 show strong evidence for qualitative individual differences. In a similar fashion, the common-effect model is clearly preferred for all prior settings in Data Sets 3 and 5.  Overall, the results presented here are robust to a wide range of reasonable prior opinion.
+
+```{r priorsettings, results="asis"}
+df <- matrix(c("1/4", "1/4", "1/4", "1/2", "1/2", "1", "1", "1", "1/2",
+               "1/4", "1/2", "1", "1/4", "1", "1/4", "1/2", "1", "1/2"),
+             byrow = T, nrow = 2)
+df <- cbind(c("$r_\\nu$", "$r_\\theta$"), df)
+
+df %>% 
+  knitr::kable("latex", booktabs = T, escape = F,
+               col.names = c("Parameter", LETTERS[1:8], "*"),
+               align = "c",
+               caption = "Prior Settings for Sensitivity Analysis") %>% 
+  kable_styling() %>% 
+  add_header_above(c(" ", "Prior Setting" = 9)) %>% 
+  footnote(escape=F, 
+           general = "The asterisk codes the prior setting used in the previous analysis.",
+           general_title = "Note.",
+           title_format = "italic", 
+           footnote_as_chunk = T,
+           threeparttable = T)
+```
+
+
+# General Discussion
+
+In this paper, we show a surprising finding.  Although the truth effect is reliably obtained across many data sets, the effect itself is inconsistent across people.  We are confident that in most experiments some people truly judge repeated statements as more valid than novel ones, while others truly judge them as less so.  This effect is not just noise---the models indicate that this inconsistency occurs above and beyond trial-by-trial variation.  What makes the finding surprising to us is that the result is in contrast to previous work with these individual-difference models.  The modal result is that "everybody does", that is, there are no qualitative individual differences in common cognitive effects such as Stroop and Flanker effects [@haaf2017; @haaf2019].  In the repetition-based truth effect, these differences exist, and they occur consistently across several data sets. 
+
+Does the presence of qualitative individual differences inform current cognitive theories of the truth effect?  We think it should. A number of theoretical explanations have been proposed for the repetition-based truth effect, for example, the recognition account [@bacon1979], the source-dissociation hypothesis [@arkes1991], the familiarity account [@begg1992], processing fluency [@reber1999], or the referential theory [@unkelbach2017].  These accounts assume different underlying cognitive mechanisms, yet, they all make the same core prediction: repetition increases perceived validity.  @unkelbach2019 summarize thusly: "No matter which mental processes may underly the repetition-induced truth effect, on a functional level, repetition increases subjective truth" (p. 5).  We argue, based on our analysis, that this statement is too general.  In fact, we show what @davis-stober2019 call the *paradox of converging evidence*: Across data sets, we find converging evidence that the statement holds on the mean level---yet, at the same time, we accumulate strong evidence that it doesn't hold for everybody.  Consequently, our results present converging evidence against theoretical positions that do not account for negative truthers.  
+
+
+# Open Practices Statement
+
+All data used in this study are publicly available from their original OSF repositories (links have been provided in the text). The reanalysis was not preregistered. This paper is written in RMarkdown which includes all code for analyses and figures. The RMarkdown and all supporting files are curated at \url{https://github.com/PerceptionAndCognitionLab/hc-truth/tree/public}.
